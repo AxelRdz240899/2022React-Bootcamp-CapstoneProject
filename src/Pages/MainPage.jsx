@@ -5,7 +5,6 @@ import { Header } from "../Components/MainPageHeader";
 import { Content } from "../Components/MainPageContent";
 
 const StyledContainer = styled.div`
-  width: 100vw;
   height: 100vh;
   background-color: #fff;
 `;

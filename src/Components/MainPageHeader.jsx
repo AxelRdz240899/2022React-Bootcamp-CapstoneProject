@@ -6,8 +6,8 @@ import { device } from "../utils/viewports";
 
 const StyledHeader = styled.header`
   border-bottom: 2px solid #158cd2;
-  width: 100vw;
   height: 60px;
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
