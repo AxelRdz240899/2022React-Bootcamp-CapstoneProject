@@ -19,7 +19,7 @@ export const FeaturedProductsContainer = styled.div`
     width: 80%;
   }
   ${device.desktop} {
-    width: 70%;
+    width: 90%;
   }
 `;
 

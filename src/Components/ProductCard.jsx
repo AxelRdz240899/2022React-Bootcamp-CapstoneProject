@@ -1,23 +1,27 @@
 import React from "react";
 import {
   StyledCard,
-  ImageContainer,
-  InformationContainer,
-  PriceCategoryContainer,
+  ProductInformationContainer,
+  PriceContainer,
   StyledProductImage,
   ProductName,
   ProductDescription,
   ProductPrice,
 } from "../Styles/ProductCardStyles";
+import { CategoryBadge } from "./CategoryBadge";
 
 export function ProductCard({ name, category, price, imageUrl, description }) {
   return (
     <StyledCard>
-      <StyledProductImage src={imageUrl} alt={name} />
-      <ProductName> {name}</ProductName>
-      <ProductDescription> {description}</ProductDescription>
-      <ProductPrice> ${price}</ProductPrice>
-      <p> {category}</p>
+      <ProductInformationContainer>
+        <StyledProductImage src={imageUrl} alt={name} />
+        <ProductName> {name}</ProductName>
+        <ProductDescription> {description}</ProductDescription>
+        <CategoryBadge category={category} />
+      </ProductInformationContainer>
+      <PriceContainer>
+        <ProductPrice> ${price}</ProductPrice>
+      </PriceContainer>
     </StyledCard>
   );
 }
