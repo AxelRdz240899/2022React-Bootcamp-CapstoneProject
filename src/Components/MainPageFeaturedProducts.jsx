@@ -1,6 +1,10 @@
 import React from "react";
 import { ProductCard } from "./ProductCard";
-import { GridContainer } from "../Styles/FeaturedProductsStyles";
+import {
+  GridContainer,
+  FeaturedProductsContainer,
+} from "../Styles/FeaturedProductsStyles";
+import { SectionTitle } from "../Styles/GeneralStyles";
 
 export function FeaturedProducts({ products }) {
   // Lista de productos destacados
@@ -15,5 +19,10 @@ export function FeaturedProducts({ products }) {
     />
   ));
 
-  return <GridContainer>{productCardList}</GridContainer>;
+  return (
+    <FeaturedProductsContainer>
+      <SectionTitle> Featured Products </SectionTitle>
+      <GridContainer>{productCardList}</GridContainer>;
+    </FeaturedProductsContainer>
+  );
 }

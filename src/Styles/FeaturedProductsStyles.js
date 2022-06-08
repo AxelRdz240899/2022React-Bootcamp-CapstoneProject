@@ -1,6 +1,9 @@
-import styled from 'styled-components';
-import { device } from '../utils/viewports';
+import styled from "styled-components";
+import { device } from "../utils/viewports";
 
+export const FeaturedProductsContainer = styled.section`
+  margin-top: 15px;
+`;
 export const GridContainer = styled.div`
   display: grid;
   column-gap: 1rem;

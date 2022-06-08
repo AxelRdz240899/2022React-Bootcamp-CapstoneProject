@@ -1,9 +1,9 @@
-import styled from 'styled-components';
-import { device } from '../utils/viewports';
+import styled from "styled-components";
+import { device } from "../utils/viewports";
 import { MdShoppingCart } from "react-icons/md";
 
 export const StyledHeader = styled.header`
-  border-bottom: 2px solid #158cd2;
+  box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
   height: 60px;
   width: 100%;
   display: flex;
@@ -17,17 +17,28 @@ export const StyledLogo = styled.img`
 `;
 
 export const StyledCartIcon = styled(MdShoppingCart)`
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: gray;
   cursor: pointer;
+
+  &:hover {
+    transition: 0.3s color ease-in-out;
+    color: #158cd2;
+  }
 `;
 
 export const StyledInput = styled.input`
   height: 50%;
-  border-radius: 8px;
-  border: 2px solid #5e5e5e;
+  border-radius: 12px;
+  border: 2px solid #158cd2;
   font-size: 1.3rem;
   padding-left: 15px;
+
+  &:focus {
+    outline: 0;
+    transition: border-color 0.6s ease-in-out;
+    border-color: #0060b7;
+  }
 
   ${device.mobile} {
     width: 45%;

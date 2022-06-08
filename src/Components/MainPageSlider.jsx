@@ -36,7 +36,6 @@ export function Slider() {
   }
 
   function goToBanner(i) {
-    console.log("Ejecutando Webada");
     if (i !== index) {
       updateIndex(i);
     }

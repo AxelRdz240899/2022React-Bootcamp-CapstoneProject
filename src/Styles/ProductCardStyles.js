@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { device } from '../utils/viewports';
+import styled from "styled-components";
+import { device } from "../utils/viewports";
 
 export const StyledCard = styled.div`
   display: flex;
@@ -8,6 +8,7 @@ export const StyledCard = styled.div`
   align-items: center;
   border-radius: 12px;
   box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: white;
 `;
 
 export const StyledProductImage = styled.img`

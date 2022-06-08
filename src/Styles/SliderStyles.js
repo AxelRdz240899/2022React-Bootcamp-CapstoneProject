@@ -12,7 +12,7 @@ export const BannerContainer = styled.div`
   background-image: url(${(props) => props.imgUrl});
   background-size: cover;
   background-repeat: no-repeat;
-
+  margin-top: 20px;
   ${device.mobile} {
     height: 50vh;
   }
@@ -50,11 +50,11 @@ export const BannerPointContainer = styled.div`
 
 export const BannerPoint = styled(MdCircle)`
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: ${(props) => (props.selected ? "#57c0ff" : "#e5e5e5")};
 
   ${device.desktop} {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 `;
 export const PreviousBanner = styled(MdNavigateBefore)`
@@ -74,10 +74,6 @@ export const PreviousBanner = styled(MdNavigateBefore)`
   ${device.tablet} {
     font-size: 4rem;
   }
-
-  ${device.laptop} {
-    font-size: 4.5rem;
-  }
 `;
 
 export const NextBanner = styled(MdNavigateNext)`
@@ -96,9 +92,5 @@ export const NextBanner = styled(MdNavigateNext)`
 
   ${device.tablet} {
     font-size: 4rem;
-  }
-
-  ${device.laptop} {
-    font-size: 4.5rem;
   }
 `;
