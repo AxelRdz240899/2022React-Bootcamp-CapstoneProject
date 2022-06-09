@@ -10,7 +10,7 @@ import {
 export function Header() {
   return (
     <StyledHeader>
-      <StyledLogo src={logo} alt="logo" />
+      <StyledLogo data-testid="header-logo" src={logo} alt="logo" />
       <StyledInput type="text" placeholder="Search product..." />
       <StyledCartIcon onClick={() => console.log("Click en carrito")} />
     </StyledHeader>
