@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { StyledCategoryBadge } from "../Styles/CategoryBadgeStyles";
 
 export function CategoryBadge({ category }) {
@@ -26,8 +27,11 @@ export function CategoryBadge({ category }) {
   }
   return (
     <StyledCategoryBadge backgroundColor={color}>
-      {" "}
       {category}
     </StyledCategoryBadge>
   );
 }
+
+CategoryBadge.propTypes = {
+  category: PropTypes.string.isRequired,
+};

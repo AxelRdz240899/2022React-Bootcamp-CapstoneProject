@@ -1,5 +1,6 @@
 import React from "react";
 import { ProductCard } from "./ProductCard";
+import Proptypes from "prop-types";
 import {
   GridContainer,
   FeaturedProductsContainer,
@@ -26,3 +27,7 @@ export function FeaturedProducts({ products }) {
     </FeaturedProductsContainer>
   );
 }
+
+FeaturedProducts.propTypes = {
+  products: Proptypes.array.isRequired,
+};

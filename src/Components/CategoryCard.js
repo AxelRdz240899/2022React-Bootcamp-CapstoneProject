@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   CategoryStyledCard,
   CategoryStyledImage,
@@ -13,3 +14,8 @@ export function CategoryCard({ name, imageSrc }) {
     </CategoryStyledCard>
   );
 }
+
+CategoryCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  imageSrc: PropTypes.string.isRequired,
+};

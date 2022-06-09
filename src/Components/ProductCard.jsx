@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   StyledCard,
   ProductInformationContainer,
@@ -20,8 +21,16 @@ export function ProductCard({ name, category, price, imageUrl, description }) {
         <CategoryBadge category={category} />
       </ProductInformationContainer>
       <PriceContainer>
-        <ProductPrice> ${price}</ProductPrice>
+        <ProductPrice> ${price} US</ProductPrice>
       </PriceContainer>
     </StyledCard>
   );
 }
+
+ProductCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+  price: PropTypes.number.isRequired,
+  imageUrl: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};

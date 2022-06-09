@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import {
   CategoriesGridContainer,
   CategoriesContainer,
@@ -46,3 +47,7 @@ export function Categories({ categories }) {
     </CategoriesContainer>
   );
 }
+
+Categories.propTypes = {
+  categories: PropTypes.array.isRequired,
+};
