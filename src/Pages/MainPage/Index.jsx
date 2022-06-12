@@ -7,11 +7,12 @@ import {
   FeaturedProductsContainer,
   CategoriesContainer,
 } from "Styles/MainPageStyles";
+import { Button } from "Styles/Button";
 
 const featuredProducts = require("mocks/en-us/featured-products.json");
 const categories = require("mocks/en-us/product-categories.json");
 
-export default function MainPageContent() {
+export default function MainPageContent({changeToProducts}) {
   return (
     <StyledContentContainer>
       {/* Slider */}
@@ -24,6 +25,7 @@ export default function MainPageContent() {
       <FeaturedProductsContainer>
         <FeaturedProducts products={featuredProducts.results} />
       </FeaturedProductsContainer>
+      <Button  onClick={changeToProducts}>View all products</Button>
     </StyledContentContainer>
   );
 }

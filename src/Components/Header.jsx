@@ -7,10 +7,15 @@ import {
   StyledInput,
 } from "Styles/HeaderStyles";
 
-export function Header() {
+export function Header({ logoClick }) {
   return (
     <StyledHeader>
-      <StyledLogo data-testid="header-logo" src={logo} alt="logo" />
+      <StyledLogo
+        data-testid="header-logo"
+        src={logo}
+        alt="logo"
+        onClick={logoClick}
+      />
       <StyledInput type="text" placeholder="Search product..." />
       <StyledCartIcon onClick={() => console.log("Click en carrito")} />
     </StyledHeader>

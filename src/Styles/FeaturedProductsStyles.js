@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { device } from "utils/viewports";
 
 export const FeaturedProductsContainer = styled.section`
-  margin-top: 15px;
+  margin: 20px 0;
 `;
 export const GridContainer = styled.div`
   display: grid;

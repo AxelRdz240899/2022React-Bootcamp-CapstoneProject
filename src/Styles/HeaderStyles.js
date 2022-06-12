@@ -13,6 +13,7 @@ export const StyledHeader = styled.header`
 `;
 
 export const StyledLogo = styled.img`
+  cursor: pointer;
   height: 60px;
 `;
 

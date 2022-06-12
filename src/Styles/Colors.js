@@ -1,0 +1,1 @@
+export const BluePrimaryColor = "#158cd2";

@@ -4,6 +4,7 @@ import { device } from "utils/viewports";
 export const StyledContentContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: #f2f8ff;
   padding: 25px 0;
 `;
