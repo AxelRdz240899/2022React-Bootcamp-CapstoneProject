@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { StyledCategoryBadge } from "../Styles/CategoryBadgeStyles";
+import { StyledCategoryBadge } from "Styles/CategoryBadgeStyles";
 
 export function CategoryBadge({ category }) {
   let color = "#ffffff";

@@ -1,10 +1,11 @@
 import styled from "styled-components";
-import { device } from "../utils/viewports";
+import { device } from "utils/viewports";
 
 export const StyledContentContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #f2f8ff;
+  padding: 25px 0;
 `;
 
 export const FeaturedProductsContainer = styled.div`

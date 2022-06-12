@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../utils/viewports";
+import { device } from "utils/viewports";
 import { MdShoppingCart } from "react-icons/md";
 
 export const StyledHeader = styled.header`

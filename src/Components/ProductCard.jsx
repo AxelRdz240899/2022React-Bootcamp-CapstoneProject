@@ -8,7 +8,7 @@ import {
   ProductName,
   ProductDescription,
   ProductPrice,
-} from "../Styles/ProductCardStyles";
+} from "Styles/ProductCardStyles";
 import { CategoryBadge } from "./CategoryBadge";
 
 export function ProductCard({ name, category, price, imageUrl, description }) {

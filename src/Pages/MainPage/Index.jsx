@@ -6,12 +6,12 @@ import {
   StyledContentContainer,
   FeaturedProductsContainer,
   CategoriesContainer,
-} from "../Styles/MainPageStyles";
+} from "Styles/MainPageStyles";
 
-const featuredProducts = require("../mocks/en-us/featured-products.json");
-const categories = require("../mocks/en-us/product-categories.json");
+const featuredProducts = require("mocks/en-us/featured-products.json");
+const categories = require("mocks/en-us/product-categories.json");
 
-export function Content() {
+export default function MainPageContent() {
   return (
     <StyledContentContainer>
       {/* Slider */}

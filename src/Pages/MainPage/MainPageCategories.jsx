@@ -3,10 +3,10 @@ import PropTypes from "prop-types";
 import {
   CategoriesGridContainer,
   CategoriesContainer,
-} from "../Styles/CategoriesStyles";
-import { SectionTitle } from "../Styles/GeneralStyles";
+} from "Styles/CategoriesStyles";
+import { SectionTitle } from "Styles/GeneralStyles";
 import { CategoriesCarousel } from "./CategoriesMobileCarousel";
-import { CategoryCard } from "./CategoryCard";
+import { CategoryCard } from "Components/CategoryCard";
 
 export function Categories({ categories }) {
   const [mobileVersion, setMobileVersion] = useState(false);

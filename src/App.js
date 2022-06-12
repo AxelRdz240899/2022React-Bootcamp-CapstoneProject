@@ -1,5 +1,5 @@
 import './App.css';
-import { MainPage } from './Pages/MainPage';
+import PageLayout from './Layout/PageLayout';
 import { useFeaturedBanners } from './utils/hooks/useFeaturedBanners';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
   console.log(data, isLoading);
 
   return (
-    <MainPage/>
+    <PageLayout/>
   );
 }
 

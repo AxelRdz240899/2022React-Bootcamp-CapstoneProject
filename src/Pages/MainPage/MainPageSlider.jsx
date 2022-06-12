@@ -6,9 +6,9 @@ import {
   PreviousBanner,
   BannerPointContainer,
   BannerPoint,
-} from "../Styles/SliderStyles";
+} from "Styles/SliderStyles";
 
-const featuredBanners = require("../mocks/en-us/featured-banners.json");
+const featuredBanners = require("mocks/en-us/featured-banners.json");
 
 const bannersData = featuredBanners.results;
 
