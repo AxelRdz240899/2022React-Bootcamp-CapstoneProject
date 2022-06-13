@@ -1,5 +1,19 @@
 import React from "react";
+import {
+  StyledMainContainer,
+  StyledSideBarContainer,
+  StyledProductsContainer,
+} from "Styles/ProductListPage/ProductListPage";
+
+import SideBar from "./SideBar";
 
 export default function ProductListPage() {
-  return <h1>This is the Product List Page</h1>;
+  return (
+    <StyledMainContainer>
+      <StyledSideBarContainer>
+        <SideBar />
+      </StyledSideBarContainer>
+      <StyledProductsContainer> </StyledProductsContainer>
+    </StyledMainContainer>
+  );
 }
