@@ -4,10 +4,12 @@ import styled from "styled-components";
 export const StyledCategoryListContainer = styled.ul`
   margin-left: 0;
   padding-left: 0;
+  text-align: center;
 `;
 
 export const StyledCategoryContainer = styled.li`
-  font-size: 1.2rem;
+  width: fit-content; 
+  font-size: 20px;
   cursor: pointer;
   list-style-type: none;
   margin-left: 0;
@@ -15,4 +17,3 @@ export const StyledCategoryContainer = styled.li`
   display: flex;
   align-items: center;
 `;
-

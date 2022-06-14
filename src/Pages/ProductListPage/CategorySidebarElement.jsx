@@ -1,5 +1,7 @@
-import React from "react";
-import { StyledCategoryContainer } from "Styles/ProductListPage/SideBar";
+import React, { useState } from "react";
+import {
+  StyledCategoryContainer,
+} from "Styles/ProductListPage/SideBar";
 
 import CheckBox from "Components/Checkbox";
 
@@ -8,9 +10,20 @@ export default function CategorySidebarElement({
   categoryId,
   categoryName,
 }) {
+  const [checked, changeChecked] = useState(false);
+
+  function handleClick() {
+    if (checked) {
+      changeChecked(false);
+      onClickHandler(categoryId);
+    } else {
+      changeChecked(true);
+      onClickHandler(categoryId);
+    }
+  }
   return (
-    <StyledCategoryContainer onClick={() => onClickHandler(categoryId)}>
-      <CheckBox checked={false} />
+    <StyledCategoryContainer onClick={() => handleClick()}>
+      <CheckBox checked={checked} />
       {categoryName}
     </StyledCategoryContainer>
   );

@@ -15,15 +15,14 @@ export const StyledMainContainer = styled.section`
 `;
 
 export const StyledSideBarContainer = styled.div`
+  background-color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  background-color: "#e5e5e5";
   ${device.laptop} {
-    width: 30%;
-  }
-  ${device.desktopXXL} {
-    width: 20%;
+    width: 25%;
+    border-right: 2px solid #0f5e9c;
   }
 `;
 
@@ -32,8 +31,12 @@ export const StyledProductsContainer = styled.div`
   flex-direction: column;
 
   ${device.laptop} {
-    width: 60%;
+    width: 75%;
     padding: 0px 25px 0px 25px;
+  }
+
+  ${device.desktop} {
+    width: 75%;
   }
 
   ${device.desktopXXL} {
@@ -43,8 +46,9 @@ export const StyledProductsContainer = styled.div`
 
 export const StyledTitle = styled.h2`
   color: #03396c;
-  font-size: 1.7rem;
+  font-size: 2rem;
   text-align: center;
+  margin: 0.5rem 0;
 `;
 
 export const CenteredContainer = styled.div`
@@ -67,6 +71,10 @@ export const StyledProductGrid = styled.div`
 
   ${device.mobileL} {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  ${device.desktop} {
+    grid-template-columns: repeat(3, 1fr);
   }
 
   ${device.desktopXXL} {

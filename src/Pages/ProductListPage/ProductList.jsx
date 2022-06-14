@@ -1,4 +1,5 @@
 import React from "react";
+import Paginator from "Components/Paginator";
 import {
   StyledTitle,
   StyledProductGrid,
@@ -11,6 +12,7 @@ export default function ProductListSection({ products }) {
       <StyledTitle>Products</StyledTitle>
       <CenteredContainer>
         <StyledProductGrid>{products}</StyledProductGrid>
+        <Paginator pagesNumber={5} />
       </CenteredContainer>
     </>
   );

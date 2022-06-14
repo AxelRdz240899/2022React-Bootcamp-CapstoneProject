@@ -32,7 +32,8 @@ export function ProductCard({
 
 ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  categoryName: PropTypes.string.isRequired,
+  categoryId: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
 };

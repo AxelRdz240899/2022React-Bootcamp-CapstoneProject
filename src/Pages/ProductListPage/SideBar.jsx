@@ -5,22 +5,21 @@ import { StyledTitle } from "Styles/ProductListPage/ProductListPage";
 
 const categories = require("mocks/en-us/product-categories.json");
 
-const categoriesList = categories.results.map((element) => {
-  return (
-    <CategorySidebarElement
-      key={element.id}
-      onClickHandler={categoryClickHandler}
-      categoryId={element.id}
-      categoryName={element.data.name}
-    />
-  );
-});
+export default function SideBar({ categoryClick }) {
+  function categoryClickHandler(categoryId) {
+    categoryClick(categoryId);
+  }
 
-function categoryClickHandler(categoryId) {
-  console.log("Se dió click a la categoría: ", categoryId);
-}
-
-export default function SideBar() {
+  const categoriesList = categories.results.map((element) => {
+    return (
+      <CategorySidebarElement
+        key={element.id}
+        onClickHandler={categoryClickHandler}
+        categoryId={element.id}
+        categoryName={element.data.name}
+      />
+    );
+  });
   return (
     <>
       <StyledTitle> Categories </StyledTitle>
