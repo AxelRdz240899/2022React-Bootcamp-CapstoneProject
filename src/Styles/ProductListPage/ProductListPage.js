@@ -10,6 +10,7 @@ export const StyledMainContainer = styled.section`
 
   ${device.laptop} {
     flex-direction: row;
+    justify-content: space-evenly;
   }
 `;
 
@@ -27,21 +28,22 @@ export const StyledSideBarContainer = styled.div`
 `;
 
 export const StyledProductsContainer = styled.div`
-  padding: 25px 0;
+  display: flex;
+  flex-direction: column;
 
   ${device.laptop} {
-    width: 70%;
+    width: 60%;
+    padding: 0px 25px 0px 25px;
   }
 
   ${device.desktopXXL} {
     width: 80%;
-    padding: 0px 25px 25px 25px;
   }
 `;
 
 export const StyledTitle = styled.h2`
-  color: #004664;
-  font-size: 2rem;
+  color: #03396c;
+  font-size: 1.7rem;
   text-align: center;
 `;
 
@@ -59,16 +61,12 @@ export const StyledProductGrid = styled.div`
 
   ${device.mobile} {
     grid-template-columns: repeat(1, 1fr);
-    width: 90%;
+    width: 80%;
+    margin: 20px 0;
   }
 
   ${device.mobileL} {
     grid-template-columns: repeat(2, 1fr);
-  }
-
-  ${device.desktop} {
-    grid-template-columns: repeat(3, 1fr);
-    width: 80%;
   }
 
   ${device.desktopXXL} {

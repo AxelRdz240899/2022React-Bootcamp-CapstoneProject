@@ -17,7 +17,6 @@ export function FeaturedProducts({ products }) {
       categoryName={element.data.category.slug}
       price={element.data.price}
       imageUrl={element.data.mainimage.url}
-      description={element.data.short_description}
     />
   ));
 

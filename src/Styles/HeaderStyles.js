@@ -4,7 +4,7 @@ import { MdShoppingCart } from "react-icons/md";
 
 export const StyledHeader = styled.header`
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
-  height: 60px;
+  height: 80px;
   width: 100%;
   display: flex;
   flex-direction: row;

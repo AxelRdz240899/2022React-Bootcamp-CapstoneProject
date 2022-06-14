@@ -20,14 +20,13 @@ let productList = productsJson.results.map((element) => (
     categoryName={element.data.category.slug}
     price={element.data.price}
     imageUrl={element.data.mainimage.url}
-    description={element.data.short_description}
   />
 ));
 
 export default function ProductListPage() {
 
   const [activeCategories, setActiveCategories] = useState([]);
-  
+
   return (
     <StyledMainContainer>
       <StyledSideBarContainer>

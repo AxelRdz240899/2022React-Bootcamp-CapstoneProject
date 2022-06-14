@@ -2,11 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   StyledCard,
-  ProductInformationContainer,
-  PriceContainer,
   StyledProductImage,
   ProductName,
-  ProductDescription,
   ProductPrice,
 } from "Styles/ProductCardStyles";
 import { CategoryBadge } from "./CategoryBadge";
@@ -18,20 +15,17 @@ export function ProductCard({
   categoryName,
   price,
   imageUrl,
-  description,
 }) {
-  console.log(categoryName);
   return (
     <StyledCard selected={selected} categoryId={categoryId}>
-      <ProductInformationContainer>
-        <StyledProductImage src={imageUrl} alt={name} />
-        <ProductName> {name}</ProductName>
-        <ProductDescription> {description}</ProductDescription>
-        <CategoryBadge categoryId={categoryId} categoryName={categoryName} />
-      </ProductInformationContainer>
-      <PriceContainer>
-        <ProductPrice> ${price} US</ProductPrice>
-      </PriceContainer>
+      <StyledProductImage src={imageUrl} alt={name} />
+      <ProductName> {name}</ProductName>
+      <CategoryBadge categoryId={categoryId} categoryName={categoryName} />
+      {/* <ProductInformationContainer>
+      </ProductInformationContainer> */}
+      <ProductPrice> ${price} US</ProductPrice>
+      {/* <PriceContainer>
+      </PriceContainer> */}
     </StyledCard>
   );
 }
@@ -41,5 +35,4 @@ ProductCard.propTypes = {
   category: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
 };

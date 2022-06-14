@@ -17,10 +17,11 @@ export const GridContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
+  ${device.laptop} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   ${device.desktop} {
     grid-template-columns: repeat(4, 1fr);
-  }
-  ${device.desktopXXL} {
-    grid-template-columns: repeat(6, 1fr);
   }
 `;

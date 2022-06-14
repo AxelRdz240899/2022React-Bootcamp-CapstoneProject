@@ -13,13 +13,13 @@ export const FeaturedProductsContainer = styled.div`
   align-self: center;
 
   ${device.mobile} {
-    width: 90%;
+    width: 85%;
   }
   ${device.tablet} {
     width: 80%;
   }
   ${device.desktop} {
-    width: 90%;
+    width: 70%;
   }
 `;
 
