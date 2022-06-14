@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/2022React-Bootcamp-CapstoneProject/static/css/main.5739ad41.chunk.css",
-    "main.js": "/2022React-Bootcamp-CapstoneProject/static/js/main.9773bd99.chunk.js",
-    "main.js.map": "/2022React-Bootcamp-CapstoneProject/static/js/main.9773bd99.chunk.js.map",
-    "runtime-main.js": "/2022React-Bootcamp-CapstoneProject/static/js/runtime-main.09e9a79a.js",
-    "runtime-main.js.map": "/2022React-Bootcamp-CapstoneProject/static/js/runtime-main.09e9a79a.js.map",
-    "static/js/2.87c29856.chunk.js": "/2022React-Bootcamp-CapstoneProject/static/js/2.87c29856.chunk.js",
-    "static/js/2.87c29856.chunk.js.map": "/2022React-Bootcamp-CapstoneProject/static/js/2.87c29856.chunk.js.map",
-    "static/js/3.41e815e2.chunk.js": "/2022React-Bootcamp-CapstoneProject/static/js/3.41e815e2.chunk.js",
-    "static/js/3.41e815e2.chunk.js.map": "/2022React-Bootcamp-CapstoneProject/static/js/3.41e815e2.chunk.js.map",
+    "main.css": "/2022React-Bootcamp-CapstoneProject/static/css/main.c2e6a4f3.chunk.css",
+    "main.js": "/2022React-Bootcamp-CapstoneProject/static/js/main.646637ea.chunk.js",
+    "main.js.map": "/2022React-Bootcamp-CapstoneProject/static/js/main.646637ea.chunk.js.map",
+    "runtime-main.js": "/2022React-Bootcamp-CapstoneProject/static/js/runtime-main.430b50f4.js",
+    "runtime-main.js.map": "/2022React-Bootcamp-CapstoneProject/static/js/runtime-main.430b50f4.js.map",
+    "static/js/2.27b55b89.chunk.js": "/2022React-Bootcamp-CapstoneProject/static/js/2.27b55b89.chunk.js",
+    "static/js/2.27b55b89.chunk.js.map": "/2022React-Bootcamp-CapstoneProject/static/js/2.27b55b89.chunk.js.map",
+    "static/js/3.1d5e4372.chunk.js": "/2022React-Bootcamp-CapstoneProject/static/js/3.1d5e4372.chunk.js",
+    "static/js/3.1d5e4372.chunk.js.map": "/2022React-Bootcamp-CapstoneProject/static/js/3.1d5e4372.chunk.js.map",
     "index.html": "/2022React-Bootcamp-CapstoneProject/index.html",
-    "static/css/main.5739ad41.chunk.css.map": "/2022React-Bootcamp-CapstoneProject/static/css/main.5739ad41.chunk.css.map",
-    "static/js/2.87c29856.chunk.js.LICENSE.txt": "/2022React-Bootcamp-CapstoneProject/static/js/2.87c29856.chunk.js.LICENSE.txt"
+    "static/css/main.c2e6a4f3.chunk.css.map": "/2022React-Bootcamp-CapstoneProject/static/css/main.c2e6a4f3.chunk.css.map",
+    "static/js/2.27b55b89.chunk.js.LICENSE.txt": "/2022React-Bootcamp-CapstoneProject/static/js/2.27b55b89.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.09e9a79a.js",
-    "static/js/2.87c29856.chunk.js",
-    "static/css/main.5739ad41.chunk.css",
-    "static/js/main.9773bd99.chunk.js"
+    "static/js/runtime-main.430b50f4.js",
+    "static/js/2.27b55b89.chunk.js",
+    "static/css/main.c2e6a4f3.chunk.css",
+    "static/js/main.646637ea.chunk.js"
   ]
 }
