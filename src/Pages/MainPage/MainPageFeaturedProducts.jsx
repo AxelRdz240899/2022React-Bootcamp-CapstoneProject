@@ -13,7 +13,8 @@ export function FeaturedProducts({ products }) {
     <ProductCard
       key={element.data.sku}
       name={element.data.name}
-      category={element.data.category.slug}
+      categoryId={element.data.category.id}
+      categoryName={element.data.category.slug}
       price={element.data.price}
       imageUrl={element.data.mainimage.url}
       description={element.data.short_description}

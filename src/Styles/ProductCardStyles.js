@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import { device } from "utils/viewports";
+import { CategoryColors } from "utils/CategoryColors";
 
 export const StyledCard = styled.div`
+  border: ${props => props.selected ? "2px solid" : "none"};
+  border-color: ${(props) =>
+    props.selected ? CategoryColors[props.categoryId] : "none"};
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -17,10 +21,6 @@ export const StyledProductImage = styled.img`
   height: auto;
   text-align: center;
   ${device.mobile} {
-    width: 60%;
-  }
-
-  ${device.mobileL} {
     width: 50%;
   }
 

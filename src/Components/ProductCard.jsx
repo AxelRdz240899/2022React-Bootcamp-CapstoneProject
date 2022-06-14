@@ -11,14 +11,23 @@ import {
 } from "Styles/ProductCardStyles";
 import { CategoryBadge } from "./CategoryBadge";
 
-export function ProductCard({ name, category, price, imageUrl, description }) {
+export function ProductCard({
+  selected,
+  name,
+  categoryId,
+  categoryName,
+  price,
+  imageUrl,
+  description,
+}) {
+  console.log(categoryName);
   return (
-    <StyledCard>
+    <StyledCard selected={selected} categoryId={categoryId}>
       <ProductInformationContainer>
         <StyledProductImage src={imageUrl} alt={name} />
         <ProductName> {name}</ProductName>
         <ProductDescription> {description}</ProductDescription>
-        <CategoryBadge category={category} />
+        <CategoryBadge categoryId={categoryId} categoryName={categoryName} />
       </ProductInformationContainer>
       <PriceContainer>
         <ProductPrice> ${price} US</ProductPrice>

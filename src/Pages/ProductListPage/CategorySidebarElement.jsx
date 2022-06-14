@@ -1,5 +1,5 @@
 import React from "react";
-import { StyledCategoryContainer } from "Styles/ProductListPage/CategorySidebarElement";
+import { StyledCategoryContainer } from "Styles/ProductListPage/SideBar";
 
 import CheckBox from "Components/Checkbox";
 
