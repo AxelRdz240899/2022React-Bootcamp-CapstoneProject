@@ -25,7 +25,7 @@ export default function MainPageContent({ changeToProducts }) {
       <FeaturedProductsContainer>
         <FeaturedProducts products={featuredProducts.results} />
       </FeaturedProductsContainer>
-      <Button onClick={changeToProducts}>View all products</Button>
+      <Button primary onClick={changeToProducts}>View all products</Button>
     </MainPageContainer>
   );
 }
