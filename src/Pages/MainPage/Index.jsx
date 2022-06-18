@@ -3,17 +3,18 @@ import { Slider } from "./MainPageSlider";
 import { Categories } from "./MainPageCategories";
 import { FeaturedProducts } from "./MainPageFeaturedProducts";
 import {
-  StyledContentContainer,
+  MainPageContainer,
   FeaturedProductsContainer,
   CategoriesContainer,
-} from "../Styles/MainPageStyles";
+} from "Styles/MainPageStyles";
+import { Button } from "Styles/Button";
 
-const featuredProducts = require("../mocks/en-us/featured-products.json");
-const categories = require("../mocks/en-us/product-categories.json");
+const featuredProducts = require("mocks/en-us/featured-products.json");
+const categories = require("mocks/en-us/product-categories.json");
 
-export function Content() {
+export default function MainPageContent({ changeToProducts }) {
   return (
-    <StyledContentContainer>
+    <MainPageContainer>
       {/* Slider */}
       <Slider />
       {/* Sección de categorias */}
@@ -24,6 +25,7 @@ export function Content() {
       <FeaturedProductsContainer>
         <FeaturedProducts products={featuredProducts.results} />
       </FeaturedProductsContainer>
-    </StyledContentContainer>
+      <Button primary onClick={changeToProducts}>View all products</Button>
+    </MainPageContainer>
   );
 }

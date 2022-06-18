@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { device } from "../utils/viewports";
+import { device } from "utils/viewports";
 import { MdNavigateBefore, MdNavigateNext, MdCircle } from "react-icons/md";
 
 export const BannerContainer = styled.div`
@@ -12,7 +12,6 @@ export const BannerContainer = styled.div`
   background-image: url(${(props) => props.imgUrl});
   background-size: cover;
   background-repeat: no-repeat;
-  margin-top: 20px;
   ${device.mobile} {
     height: 50vh;
   }

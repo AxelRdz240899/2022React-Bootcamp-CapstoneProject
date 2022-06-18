@@ -1,25 +1,25 @@
 import styled from "styled-components";
-import { device } from "../utils/viewports";
+import { device } from "utils/viewports";
 
-export const StyledContentContainer = styled.div`
+export const MainPageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #f2f8ff;
+  align-items: center;
+  padding: 25px 0;
 `;
-
 export const FeaturedProductsContainer = styled.div`
   display: flex;
   justify-content: center;
   align-self: center;
 
   ${device.mobile} {
-    width: 90%;
+    width: 85%;
   }
   ${device.tablet} {
     width: 80%;
   }
   ${device.desktop} {
-    width: 90%;
+    width: 70%;
   }
 `;
 

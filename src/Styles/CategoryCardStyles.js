@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import { device } from "../utils/viewports";
+import { device } from "utils/viewports";
 
 export const CategoryCardText = styled.div`
+  cursor: pointer;
   z-index: 3;
   text-align: center;
   position: absolute;

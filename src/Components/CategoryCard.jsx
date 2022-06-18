@@ -4,7 +4,7 @@ import {
   CategoryStyledCard,
   CategoryStyledImage,
   CategoryCardText,
-} from "../Styles/CategoryCardStyles";
+} from "Styles/CategoryCardStyles";
 
 export function CategoryCard({ name, imageSrc }) {
   return (

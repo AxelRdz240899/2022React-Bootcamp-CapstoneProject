@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { device } from "../utils/viewports";
+import { device } from "utils/viewports";
 
 export const FeaturedProductsContainer = styled.section`
-  margin-top: 15px;
+  margin: 20px 0;
 `;
 export const GridContainer = styled.div`
   display: grid;
@@ -17,10 +17,11 @@ export const GridContainer = styled.div`
     grid-template-columns: repeat(2, 1fr);
   }
 
+  ${device.laptop} {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
   ${device.desktop} {
     grid-template-columns: repeat(4, 1fr);
-  }
-  ${device.desktopXXL} {
-    grid-template-columns: repeat(6, 1fr);
   }
 `;

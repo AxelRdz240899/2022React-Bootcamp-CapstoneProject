@@ -2,35 +2,38 @@ import React from "react";
 import PropTypes from "prop-types";
 import {
   StyledCard,
-  ProductInformationContainer,
-  PriceContainer,
   StyledProductImage,
   ProductName,
-  ProductDescription,
   ProductPrice,
-} from "../Styles/ProductCardStyles";
+} from "Styles/ProductCardStyles";
 import { CategoryBadge } from "./CategoryBadge";
 
-export function ProductCard({ name, category, price, imageUrl, description }) {
+export function ProductCard({
+  selected,
+  name,
+  categoryId,
+  categoryName,
+  price,
+  imageUrl,
+}) {
   return (
-    <StyledCard>
-      <ProductInformationContainer>
-        <StyledProductImage src={imageUrl} alt={name} />
-        <ProductName> {name}</ProductName>
-        <ProductDescription> {description}</ProductDescription>
-        <CategoryBadge category={category} />
-      </ProductInformationContainer>
-      <PriceContainer>
-        <ProductPrice> ${price} US</ProductPrice>
-      </PriceContainer>
+    <StyledCard selected={selected} categoryId={categoryId}>
+      <StyledProductImage src={imageUrl} alt={name} />
+      <ProductName> {name}</ProductName>
+      <CategoryBadge categoryId={categoryId} categoryName={categoryName} />
+      {/* <ProductInformationContainer>
+      </ProductInformationContainer> */}
+      <ProductPrice> ${price} US</ProductPrice>
+      {/* <PriceContainer>
+      </PriceContainer> */}
     </StyledCard>
   );
 }
 
 ProductCard.propTypes = {
   name: PropTypes.string.isRequired,
-  category: PropTypes.string.isRequired,
+  categoryName: PropTypes.string.isRequired,
+  categoryId: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
 };
