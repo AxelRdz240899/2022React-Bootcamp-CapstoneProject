@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "utils/assets/logo.png";
 import {
   StyledHeader,
@@ -10,12 +11,9 @@ import {
 export function Header({ logoClick }) {
   return (
     <StyledHeader>
-      <StyledLogo
-        data-testid="header-logo"
-        src={logo}
-        alt="logo"
-        onClick={logoClick}
-      />
+      <Link to="/">
+        <StyledLogo data-testid="header-logo" src={logo} alt="logo" />
+      </Link>
       <StyledInput type="text" placeholder="Search product..." />
       <StyledCartIcon onClick={() => console.log("Click en carrito")} />
     </StyledHeader>

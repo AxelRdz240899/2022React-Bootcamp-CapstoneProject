@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { device } from "utils/viewports";
 
 export const StyledMainContainer = styled.section`
+  background-color: #f2f8ff;
   display: flex;
 
   ${device.mobile} {
