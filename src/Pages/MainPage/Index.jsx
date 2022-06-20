@@ -12,7 +12,6 @@ import {
 import { Button } from "Styles/Button";
 
 const featuredProducts = require("mocks/en-us/featured-products.json");
-const categories = require("mocks/en-us/product-categories.json");
 
 export default function MainPage({ changeToProducts }) {
   return (
@@ -21,7 +20,7 @@ export default function MainPage({ changeToProducts }) {
       <Slider />
       {/* Sección de categorias */}
       <CategoriesContainer>
-        <Categories categories={categories.results} />
+        <Categories />
       </CategoriesContainer>
       {/* Sección de productos destacados */}
       <FeaturedProductsContainer>

@@ -5,12 +5,15 @@ import {
   CategoryStyledImage,
   CategoryCardText,
 } from "Styles/CategoryCardStyles";
+import { Link } from "react-router-dom";
 
-export function CategoryCard({ name, imageSrc }) {
+export function CategoryCard({ name, imageSrc, categoryId }) {
   return (
     <CategoryStyledCard>
-      <CategoryCardText>{name}</CategoryCardText>
-      <CategoryStyledImage src={imageSrc} alt={name} />
+      <Link to={`products?category=${categoryId}`}>
+        <CategoryCardText>{name}</CategoryCardText>
+        <CategoryStyledImage src={imageSrc} alt={name} />
+      </Link>
     </CategoryStyledCard>
   );
 }
@@ -18,4 +21,5 @@ export function CategoryCard({ name, imageSrc }) {
 CategoryCard.propTypes = {
   name: PropTypes.string.isRequired,
   imageSrc: PropTypes.string.isRequired,
+  categoryId: PropTypes.string.isRequired,
 };
