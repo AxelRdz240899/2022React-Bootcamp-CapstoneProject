@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useFeaturedBanners } from "utils/hooks/useFeaturedBanners";
 import {
   BannerContainer,
   BannerContent,
@@ -8,22 +9,27 @@ import {
   BannerPoint,
 } from "Styles/SliderStyles";
 
-const featuredBanners = require("mocks/en-us/featured-banners.json");
-
-const bannersData = featuredBanners.results;
+import LoadingSpinner from "Components/LoadingSpinner";
 
 export function Slider() {
   const [index, updateIndex] = useState(0);
+  const { data, isLoading } = useFeaturedBanners();
 
-  const image = bannersData[index].data.main_image.url;
+  let bannersData = [];
+  let image = "";
+  let bannerPoints;
 
-  const bannerPoints = featuredBanners.results.map((element, i) => (
-    <BannerPoint
-      key={element.id}
-      selected={index === i ? true : false}
-      onClick={() => goToBanner(i)}
-    />
-  ));
+  if (data && !isLoading) {
+    bannersData = data.results;
+    image = bannersData[index]?.data.main_image.url;
+    bannerPoints = bannersData.map((element, i) => (
+      <BannerPoint
+        key={element.id}
+        selected={index === i ? true : false}
+        onClick={() => goToBanner(i)}
+      />
+    ));
+  }
 
   function forwardIndexHandler() {
     let indexAux = index === bannersData.length - 1 ? 0 : index + 1;
@@ -42,12 +48,17 @@ export function Slider() {
   }
 
   return (
-    <BannerContainer imgUrl={image}>
-      <BannerContent>
-        <PreviousBanner onClick={() => backwardIndexHandler()} />
-        <NextBanner onClick={() => forwardIndexHandler()} />
-        <BannerPointContainer>{bannerPoints}</BannerPointContainer>
-      </BannerContent>
-    </BannerContainer>
+    <>
+      {isLoading && <LoadingSpinner />}
+      {!isLoading && (
+        <BannerContainer imgUrl={image}>
+          <BannerContent>
+            <PreviousBanner onClick={() => backwardIndexHandler()} />
+            <NextBanner onClick={() => forwardIndexHandler()} />
+            <BannerPointContainer>{bannerPoints}</BannerPointContainer>
+          </BannerContent>
+        </BannerContainer>
+      )}
+    </>
   );
 }
