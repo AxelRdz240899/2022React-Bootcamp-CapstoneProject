@@ -1,33 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ProductCard } from "Components/ProductCard";
-import Proptypes from "prop-types";
 import {
   GridContainer,
   FeaturedProductsContainer,
 } from "Styles/FeaturedProductsStyles";
 import { SectionTitle } from "Styles/GeneralStyles";
+import { useWizelineGetEndpoints } from "utils/hooks/useWizelineGetEndpoints";
+import { getFeaturedProductsUrl } from "utils/constants";
+import LoadingSpinner from "Components/LoadingSpinner";
 
-export function FeaturedProducts({ products }) {
+export function FeaturedProducts() {
+  const [products, setProducts] = useState([]);
+
+  let { data, isLoading } = useWizelineGetEndpoints(getFeaturedProductsUrl);
+  useEffect(() => {
+    if (!data || isLoading) {
+      return () => {};
+    }
+
+    setProducts(data.results?.splice(0, 16));
+  }, [data, isLoading]);
+
   // Lista de productos destacados
-  const productCardList = products.map((element) => (
+  const productCardList = products?.map((element) => (
     <ProductCard
+      selected={false}
       key={element.data.sku}
       name={element.data.name}
       categoryId={element.data.category.id}
       categoryName={element.data.category.slug}
       price={element.data.price}
       imageUrl={element.data.mainimage.url}
+      productId={element.data.sku}
     />
   ));
 
   return (
-    <FeaturedProductsContainer>
-      <SectionTitle> Featured Products </SectionTitle>
-      <GridContainer>{productCardList}</GridContainer>
-    </FeaturedProductsContainer>
+    <>
+      {isLoading && <LoadingSpinner />}
+      {!isLoading && (
+        <FeaturedProductsContainer>
+          <SectionTitle> Featured Products </SectionTitle>
+          <GridContainer>{productCardList}</GridContainer>
+        </FeaturedProductsContainer>
+      )}
+    </>
   );
 }
-
-FeaturedProducts.propTypes = {
-  products: Proptypes.array.isRequired,
-};

@@ -33,6 +33,7 @@ function getFilteredProductList(filters) {
       categoryName={element.data.category.slug}
       price={element.data.price}
       imageUrl={element.data.mainimage.url}
+      productId={element.data.sku}
     />
   ));
 }

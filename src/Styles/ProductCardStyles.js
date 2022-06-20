@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { device } from "utils/viewports";
 import { CategoryColors } from "utils/CategoryColors";
+import { Link } from "react-router-dom";
 
-export const StyledCard = styled.div`
+export const StyledCard = styled(Link)`
   border: ${(props) => (props.selected ? "2px solid" : "none")};
   border-color: ${(props) =>
-    props.selected ? CategoryColors[props.categoryId] : "none"};
+    props.selected ? CategoryColors[props.categoryid] : "none"};
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -15,6 +16,7 @@ export const StyledCard = styled.div`
   background-color: white;
   padding: 12px 25px;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 export const StyledImgContainer = styled.div`
@@ -38,7 +40,7 @@ export const StyledProductImage = styled.img`
 `;
 
 export const ProductName = styled.p`
-  color: 	#2389da;
+  color: #2389da;
   font-size: 23px;
   font-weight: 700;
   text-align: center;

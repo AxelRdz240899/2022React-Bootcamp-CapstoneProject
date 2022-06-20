@@ -3,7 +3,7 @@ import { device } from "utils/viewports";
 
 export const StyledMainContainer = styled.section`
   display: flex;
-
+  background-color: #f2f8ff;
   ${device.mobile} {
     flex-direction: column;
   }

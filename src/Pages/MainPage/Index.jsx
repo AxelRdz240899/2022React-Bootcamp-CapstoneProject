@@ -11,8 +11,6 @@ import {
 
 import { Button } from "Styles/Button";
 
-const featuredProducts = require("mocks/en-us/featured-products.json");
-
 export default function MainPage({ changeToProducts }) {
   return (
     <MainPageContainer>
@@ -24,7 +22,7 @@ export default function MainPage({ changeToProducts }) {
       </CategoriesContainer>
       {/* Sección de productos destacados */}
       <FeaturedProductsContainer>
-        <FeaturedProducts products={featuredProducts.results} />
+        <FeaturedProducts />
       </FeaturedProductsContainer>
       {/* Boton para ir a lista de productos */}
       <Link to="/products">

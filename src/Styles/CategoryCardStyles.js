@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { device } from "utils/viewports";
-import { Link } from "react-router-dom";
 
 export const CategoryCardText = styled.div`
   cursor: pointer;
