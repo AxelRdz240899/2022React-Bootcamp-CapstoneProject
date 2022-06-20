@@ -19,7 +19,7 @@ export function ProductCard({
 }) {
   return (
     <StyledCard
-      to={`product/${productId}`}
+      to={`/product/${productId}`}
       selected={selected}
       categoryid={categoryId}
     >

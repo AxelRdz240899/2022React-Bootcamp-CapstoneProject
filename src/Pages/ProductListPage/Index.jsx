@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyledMainContainer,
   StyledSideBarContainer,
@@ -8,23 +8,24 @@ import {
 import SideBar from "./SideBar";
 import ProductListSection from "./ProductList";
 import { ProductCard } from "Components/ProductCard";
+import { useWizelineGetEndpoints } from "utils/hooks/useWizelineGetEndpoints";
+import { getProductsUrl } from "utils/constants";
+import LoadingSpinner from "Components/LoadingSpinner";
 
-const productsJson = require("mocks/en-us/products.json");
-
-function getFilteredProductList(filters) {
+function getFilteredProductList(filters, products) {
   let filteredProductList = [];
 
   if (filters.length === 0) {
-    filteredProductList = productsJson.results;
+    filteredProductList = products;
   } else {
-    productsJson.results.forEach((product) => {
+    products.forEach((product) => {
       if (filters.indexOf(product.data.category.id) !== -1) {
         filteredProductList.push(product);
       }
     });
   }
 
-  return filteredProductList.map((element) => (
+  return filteredProductList?.map((element) => (
     <ProductCard
       selected={true}
       key={element.data.sku}
@@ -37,10 +38,23 @@ function getFilteredProductList(filters) {
     />
   ));
 }
+
 export default function ProductListPage() {
+  const [products, setProducts] = useState([]);
+  let { data, isLoading } = useWizelineGetEndpoints(getProductsUrl);
+
+  useEffect(() => {
+    if (!data && isLoading) {
+      return () => {};
+    }
+
+    console.log(data.results);
+    setProducts(data.results);
+  }, [data, isLoading]);
+
   const [activeCategories, setActiveCategories] = useState([]);
 
-  let productList = getFilteredProductList(activeCategories);
+  let productList = getFilteredProductList(activeCategories, products);
 
   function categoryClick(categoryId) {
     let categoryIndex = activeCategories.indexOf(categoryId);
@@ -58,13 +72,18 @@ export default function ProductListPage() {
   }
 
   return (
-    <StyledMainContainer>
-      <StyledSideBarContainer>
-        <SideBar categoryClick={categoryClick} />
-      </StyledSideBarContainer>
-      <StyledProductsContainer>
-        <ProductListSection products={productList} />
-      </StyledProductsContainer>
-    </StyledMainContainer>
+    <>
+      {isLoading && <LoadingSpinner />}
+      {!isLoading && (
+        <StyledMainContainer>
+          <StyledSideBarContainer>
+            <SideBar categoryClick={categoryClick} />
+          </StyledSideBarContainer>
+          <StyledProductsContainer>
+            <ProductListSection products={productList} />
+          </StyledProductsContainer>
+        </StyledMainContainer>
+      )}
+    </>
   );
 }
