@@ -27,7 +27,7 @@ export function useWizelineGetEndpoints(url) {
         const data = await response.json()
         setResponseStatus({ data, isLoading: false });
       } catch (err) {
-        setResponseStatus({ data : {}, isLoading: false });
+        setResponseStatus({ data: { results: [] }, isLoading: false });
       }
     }
 

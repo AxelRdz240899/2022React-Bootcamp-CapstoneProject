@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import {
   StyledMainContainer,
   StyledSideBarContainer,
@@ -7,81 +7,57 @@ import {
 
 import SideBar from "./SideBar";
 import ProductListSection from "./ProductList";
-import { ProductCard } from "Components/ProductCard";
 import { useWizelineGetEndpoints } from "utils/hooks/useWizelineGetEndpoints";
-import { getProductsUrl } from "utils/constants";
+import { getCategoriesUrl, getProductsUrl } from "utils/constants";
 import LoadingSpinner from "Components/LoadingSpinner";
-
-function getFilteredProductList(filters, products) {
-  let filteredProductList = [];
-
-  if (filters.length === 0) {
-    filteredProductList = products;
-  } else {
-    products.forEach((product) => {
-      if (filters.indexOf(product.data.category.id) !== -1) {
-        filteredProductList.push(product);
-      }
-    });
-  }
-
-  return filteredProductList.map((element) => (
-    <ProductCard
-      selected={true}
-      key={element.data.sku}
-      name={element.data.name}
-      categoryId={element.data.category.id}
-      categoryName={element.data.category.slug}
-      price={element.data.price}
-      imageUrl={element.data.mainimage.url}
-      productId={element.data.sku}
-    />
-  ));
-}
+import { useDispatch } from "react-redux";
+import { setCategories } from "redux/slices/categoriesSlice";
+import { setProductList } from "redux/slices/productsSlice";
 
 export default function ProductListPage() {
-  const [products, setProducts] = useState([]);
-  let { data, isLoading } = useWizelineGetEndpoints(getProductsUrl);
+  const dispatch = useDispatch();
 
+  // const [products, setProducts] = useState([]);
+
+  let productRequest = useWizelineGetEndpoints(getProductsUrl);
+  let categoriesRequest = useWizelineGetEndpoints(getCategoriesUrl);
+
+  // Use Effect que setea la lista de productos
   useEffect(() => {
-    if (!data || isLoading) {
+    if (!productRequest.data || productRequest.isLoading) {
       return () => {};
-    }
-    setProducts(data.results);
-  }, [data, isLoading]);
-
-  const [activeCategories, setActiveCategories] = useState([]);
-
-  let productList = getFilteredProductList(activeCategories, products);
-
-  function categoryClick(categoryId) {
-    let categoryIndex = activeCategories.indexOf(categoryId);
-    let newCategoryArray = [];
-
-    newCategoryArray.push(...activeCategories);
-
-    if (categoryIndex === -1) {
-      newCategoryArray.push(categoryId);
-      setActiveCategories(newCategoryArray);
     } else {
-      newCategoryArray.splice(categoryIndex, 1);
-      setActiveCategories(newCategoryArray);
+      dispatch(setProductList(productRequest.data.results));
+      // setProducts(productRequest.data.results);
     }
-  }
+  }, [productRequest.data, productRequest.isLoading, dispatch]);
+
+  // Use effect que setea la lista de categorias
+  useEffect(() => {
+    if (!categoriesRequest.data || categoriesRequest.isLoading) {
+      return () => {};
+    } else {
+      dispatch(setCategories(categoriesRequest.data.results));
+    }
+  }, [categoriesRequest.data, categoriesRequest.isLoading, dispatch]);
+
+  // let productList = getFilteredProductList(activeCategories, products);
 
   return (
-    <>
-      {isLoading && <LoadingSpinner />}
-      {!isLoading && (
-        <StyledMainContainer>
+    <StyledMainContainer>
+      {!productRequest.isLoading && !categoriesRequest.isLoading && (
+        <>
           <StyledSideBarContainer>
-            <SideBar categoryClick={categoryClick} />
+            <SideBar />
           </StyledSideBarContainer>
           <StyledProductsContainer>
-            <ProductListSection products={productList} />
+            <ProductListSection />
           </StyledProductsContainer>
-        </StyledMainContainer>
+        </>
       )}
-    </>
+      {(productRequest.isLoading || categoriesRequest.isLoading) && (
+        <LoadingSpinner />
+      )}
+    </StyledMainContainer>
   );
 }
