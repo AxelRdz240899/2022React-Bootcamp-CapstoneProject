@@ -12,7 +12,7 @@ export function useWizelineGetEndpoints(url) {
 
   useEffect(() => {
     if (!apiRef || isApiMetadataLoading) {
-      return () => {};
+      return () => { };
     }
 
     const controller = new AbortController();
@@ -20,15 +20,14 @@ export function useWizelineGetEndpoints(url) {
     async function getFromEndpoint() {
       let apiParameters = url.replace("{apiRef}", apiRef);
       try {
-        setResponseStatus({ data: {}, isLoading: true });
+        setResponseStatus({ data: { results: [] }, isLoading: true });
         const response = await fetch(`${API_BASE_URL}${apiParameters}`, {
           signal: controller.signal,
         });
-        const data = await response.json();
+        const data = await response.json()
         setResponseStatus({ data, isLoading: false });
       } catch (err) {
-        setResponseStatus({ data: {}, isLoading: false });
-        console.error(err);
+        setResponseStatus({ data : {}, isLoading: false });
       }
     }
 

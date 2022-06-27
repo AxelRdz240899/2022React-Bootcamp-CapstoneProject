@@ -15,4 +15,5 @@ export const StyledPaginatorButton = styled.div`
   margin-right: 8px;
   border: 2px solid ${BluePrimaryColor};
   background-color: ${(props) => (props.selected ? BluePrimaryColor : "white")};
+  cursor: pointer;
 `;

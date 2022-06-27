@@ -25,7 +25,7 @@ function getFilteredProductList(filters, products) {
     });
   }
 
-  return filteredProductList?.map((element) => (
+  return filteredProductList.map((element) => (
     <ProductCard
       selected={true}
       key={element.data.sku}
@@ -44,11 +44,9 @@ export default function ProductListPage() {
   let { data, isLoading } = useWizelineGetEndpoints(getProductsUrl);
 
   useEffect(() => {
-    if (!data && isLoading) {
+    if (!data || isLoading) {
       return () => {};
     }
-
-    console.log(data.results);
     setProducts(data.results);
   }, [data, isLoading]);
 
