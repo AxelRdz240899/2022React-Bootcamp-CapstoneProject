@@ -8,6 +8,8 @@ import {
   getSelectedCategories,
   resetSelectedCategories,
 } from "redux/slices/categoriesSlice";
+
+import { resetProductPage } from "redux/slices/productsSlice";
 import { useDispatch } from "react-redux";
 import { Button } from "Styles/Button";
 
@@ -26,6 +28,11 @@ export default function SideBar() {
     );
   });
 
+  function resetCategorySelection() {
+    dispatch(resetSelectedCategories());
+    dispatch(resetProductPage());
+  }
+
   return (
     <>
       <StyledTitle> Categories </StyledTitle>
@@ -33,9 +40,7 @@ export default function SideBar() {
         {categoriesList}
       </StyledCategoryListContainer>
       {selectedCategories.length > 0 && (
-        <Button onClick={() => dispatch(resetSelectedCategories())}>
-          Clear filters
-        </Button>
+        <Button onClick={() => resetCategorySelection()}>Clear filters</Button>
       )}
     </>
   );

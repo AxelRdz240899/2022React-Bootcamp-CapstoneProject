@@ -16,13 +16,13 @@ export function FeaturedProducts() {
   useEffect(() => {
     if (!data || isLoading) {
       return () => {};
+    } else {
+      setProducts(data.results.splice(0, 16));
     }
-
-    setProducts(data.results?.splice(0, 16));
   }, [data, isLoading]);
 
   // Lista de productos destacados
-  const productCardList = products?.map((element) => (
+  const productCardList = products.map((element) => (
     <ProductCard
       selected={false}
       key={element.data.sku}

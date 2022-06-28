@@ -7,6 +7,7 @@ import {
 } from "redux/slices/categoriesSlice";
 
 import CategoryCheckBox from "Components/CategoryCheckbox";
+import { resetProductPage } from "redux/slices/productsSlice";
 
 export default function CategorySidebarElement({ categoryId, categoryName }) {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ export default function CategorySidebarElement({ categoryId, categoryName }) {
 
   function handleClick() {
     dispatch(selectCategory(categoryId));
+    dispatch(resetProductPage());
   }
 
   return (

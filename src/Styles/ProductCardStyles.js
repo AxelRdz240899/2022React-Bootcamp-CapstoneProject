@@ -23,20 +23,9 @@ export const StyledImgContainer = styled.div`
   background-color: #dfedf4;
 `;
 export const StyledProductImage = styled.img`
-  height: auto;
-  text-align: center;
-
-  ${device.mobile} {
-    width: 60%;
-  }
-
-  ${device.tablet} {
-    width: 45%;
-  }
-
-  ${device.laptop} {
-    width: 55%;
-  }
+  height: 200px;
+  width:auto;
+  text-align: center;  
 `;
 
 export const ProductName = styled.p`
