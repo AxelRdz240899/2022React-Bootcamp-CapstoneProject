@@ -4,21 +4,25 @@ import { MdShoppingCart } from "react-icons/md";
 
 export const StyledHeader = styled.header`
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
-  height: 80px;
+  height: 100px;
   width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-around;
+  position: fixed;
+  background-color: white;
+  top: 0;
+  z-index: 9999;
 `;
 
 export const StyledLogo = styled.img`
   cursor: pointer;
-  height: 60px;
+  height: 80px;
 `;
 
 export const StyledCartIcon = styled(MdShoppingCart)`
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   color: gray;
   cursor: pointer;
 
@@ -42,7 +46,7 @@ export const StyledInput = styled.input`
   }
 
   ${device.mobile} {
-    width: 45%;
+    width: 40%;
     font-size: 0.8rem;
   }
 

@@ -5,7 +5,6 @@ export const MainPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 25px 0;
   background-color: #f2f8ff;
 `;
 export const FeaturedProductsContainer = styled.div`
