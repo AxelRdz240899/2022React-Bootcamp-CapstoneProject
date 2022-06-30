@@ -3,7 +3,7 @@ import {
   CategoriesGridContainer,
   CategoriesContainer,
 } from "Styles/CategoriesStyles";
-import { SectionTitle } from "Styles/GeneralStyles";
+import { StyledTitle } from "Styles/GeneralStyles";
 import { CategoriesCarousel } from "./CategoriesMobileCarousel";
 import { CategoryCard } from "Components/CategoryCard";
 import { useWizelineGetEndpoints } from "utils/hooks/useWizelineGetEndpoints";
@@ -55,7 +55,7 @@ export function Categories() {
       {isLoading && <LoadingSpinner />}
       {!isLoading && (
         <CategoriesContainer>
-          <SectionTitle> Categories </SectionTitle>
+          <StyledTitle> Categories </StyledTitle>
           {mobileVersion && <CategoriesCarousel categories={categoriesList} />}
           {!mobileVersion && (
             <CategoriesGridContainer>{categoriesList}</CategoriesGridContainer>

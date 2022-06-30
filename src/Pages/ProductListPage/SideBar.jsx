@@ -1,7 +1,7 @@
 import React from "react";
 import CategorySidebarElement from "./CategorySidebarElement";
 import { StyledCategoryListContainer } from "Styles/ProductListPage/SideBar";
-import { StyledTitle } from "Styles/ProductListPage/ProductListPage";
+import { StyledTitle } from "Styles/GeneralStyles";
 import { useSelector } from "react-redux";
 import {
   getCategories,

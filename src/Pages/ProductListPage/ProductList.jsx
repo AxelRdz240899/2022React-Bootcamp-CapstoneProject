@@ -2,10 +2,10 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import Paginator from "Components/Paginator";
 import {
-  StyledTitle,
   StyledProductGrid,
   CenteredContainer,
 } from "Styles/ProductListPage/ProductListPage";
+import { StyledTitle } from "Styles/GeneralStyles";
 import getFilteredProductList from "utils/getFilteredProductList";
 import { useSelector } from "react-redux";
 import { getSelectedCategories } from "redux/slices/categoriesSlice";
@@ -40,7 +40,7 @@ export default function ProductListSection() {
   function clickHandler(number) {
     dispatch(setProductPage(number));
   }
-  
+
   return (
     <>
       <StyledTitle>Products</StyledTitle>

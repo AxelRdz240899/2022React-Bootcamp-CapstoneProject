@@ -44,13 +44,6 @@ export const StyledProductsContainer = styled.div`
   }
 `;
 
-export const StyledTitle = styled.h2`
-  color: #03396c;
-  font-size: 2rem;
-  text-align: center;
-  margin: 0.5rem 0;
-`;
-
 export const CenteredContainer = styled.div`
   display: flex;
   flex-direction: column;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const StyledCategoryBadge = styled.span`
   color: white;
   font-weight: 600;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   text-align: center;
   padding: 5px 10px;
   background-color: ${(props) => props.backgroundColor};
@@ -11,4 +11,5 @@ export const StyledCategoryBadge = styled.span`
   &::first-letter {
     text-transform: capitalize;
   }
+  width: fit-content;
 `;

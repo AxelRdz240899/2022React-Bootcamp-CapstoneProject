@@ -4,7 +4,7 @@ import {
   GridContainer,
   FeaturedProductsContainer,
 } from "Styles/FeaturedProductsStyles";
-import { SectionTitle } from "Styles/GeneralStyles";
+import { StyledTitle } from "Styles/GeneralStyles";
 import { useWizelineGetEndpoints } from "utils/hooks/useWizelineGetEndpoints";
 import { getFeaturedProductsUrl } from "utils/constants";
 import LoadingSpinner from "Components/LoadingSpinner";
@@ -40,7 +40,7 @@ export function FeaturedProducts() {
       {isLoading && <LoadingSpinner />}
       {!isLoading && (
         <FeaturedProductsContainer>
-          <SectionTitle> Featured Products </SectionTitle>
+          <StyledTitle> Featured Products </StyledTitle>
           <GridContainer>{productCardList}</GridContainer>
         </FeaturedProductsContainer>
       )}
