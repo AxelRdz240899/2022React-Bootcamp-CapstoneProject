@@ -25,7 +25,7 @@ export default function ProductListSection() {
   const products = useSelector(getProducts);
 
   const productList = getFilteredProductList(activeCategories, products);
-  const numberOfPages = Math.ceil(productList.length / 12);
+  const numberOfPages = Math.ceil(productList.length / pageElements);
 
   const startIndex = (pageNumber - 1) * pageElements;
   const pageProductList = productList.slice(

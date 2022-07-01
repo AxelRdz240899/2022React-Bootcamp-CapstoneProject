@@ -18,9 +18,14 @@ export function Header() {
     setSearch(event.target.value);
   }
 
+  function handleKeyDown(event) {
+    if (event.key === "Enter") {
+      ProductSearch();
+    }
+  }
   function ProductSearch() {
-    setSearch("");
     navigate(`/search?q=${searchInput}`);
+    setSearch("");
   }
 
   return (
@@ -34,6 +39,7 @@ export function Header() {
         <StyledInput
           value={searchInput}
           onChange={handleInputSearch}
+          onKeyDown={handleKeyDown}
           type="text"
           placeholder="Search products..."
         />
