@@ -52,8 +52,9 @@ export function Categories() {
 
   return (
     <>
-      {isLoading && <LoadingSpinner />}
-      {!isLoading && (
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
         <CategoriesContainer>
           <StyledTitle> Categories </StyledTitle>
           {mobileVersion && <CategoriesCarousel categories={categoriesList} />}

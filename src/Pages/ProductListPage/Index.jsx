@@ -45,7 +45,7 @@ export default function ProductListPage() {
 
   return (
     <StyledMainContainer>
-      {!productRequest.isLoading && !categoriesRequest.isLoading && (
+      {!productRequest.isLoading && !categoriesRequest.isLoading ? (
         <>
           <StyledSideBarContainer>
             <SideBar />
@@ -54,8 +54,7 @@ export default function ProductListPage() {
             <ProductListSection />
           </StyledProductsContainer>
         </>
-      )}
-      {(productRequest.isLoading || categoriesRequest.isLoading) && (
+      ) : (
         <LoadingSpinner />
       )}
     </StyledMainContainer>

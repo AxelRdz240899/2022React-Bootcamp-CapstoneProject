@@ -37,8 +37,9 @@ export function FeaturedProducts() {
 
   return (
     <>
-      {isLoading && <LoadingSpinner />}
-      {!isLoading && (
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
         <FeaturedProductsContainer>
           <StyledTitle> Featured Products </StyledTitle>
           <GridContainer>{productCardList}</GridContainer>

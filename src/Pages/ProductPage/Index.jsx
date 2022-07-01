@@ -76,8 +76,9 @@ export default function ProductPage() {
 
   return (
     <>
-      {isLoading && <LoadingSpinner />}
-      {!isLoading && (
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
         <MainContainer>
           <CarouselContainer>
             <ProductGallery product={product} />

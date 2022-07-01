@@ -49,8 +49,9 @@ export function Slider() {
 
   return (
     <>
-      {isLoading && <LoadingSpinner />}
-      {!isLoading && (
+      {isLoading ? (
+        <LoadingSpinner />
+      ) : (
         <BannerContainer imgUrl={image}>
           <BannerContent>
             <PreviousBanner onClick={() => backwardIndexHandler()} />
