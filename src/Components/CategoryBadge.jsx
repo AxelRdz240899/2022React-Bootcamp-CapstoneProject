@@ -14,5 +14,4 @@ export function CategoryBadge({ categoryId, categoryName }) {
 
 CategoryBadge.propTypes = {
   categoryName: PropTypes.string.isRequired,
-  categoryId: PropTypes.string.isRequired,
 };

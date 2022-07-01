@@ -1,5 +1,5 @@
 import React from "react";
-
+import PropTypes from "prop-types";
 import {
   ProductInformationContainer,
   InformationCard,
@@ -22,7 +22,6 @@ import {
 import { CategoryBadge } from "Components/CategoryBadge";
 
 export default function ProductInformationCard({ product }) {
-    
   const tags = product?.tags?.map((element, index) => {
     return <Tag key={element}>{element}</Tag>;
   });
@@ -89,3 +88,7 @@ export default function ProductInformationCard({ product }) {
     </ProductInformationContainer>
   );
 }
+
+ProductInformationCard.propTypes = {
+  product: PropTypes.object.isRequired,
+};

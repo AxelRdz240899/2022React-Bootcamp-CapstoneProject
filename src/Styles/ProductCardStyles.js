@@ -1,8 +1,10 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { device } from "utils/viewports";
 import { CategoryColors } from "utils/CategoryColors";
 import { Link } from "react-router-dom";
 import { Button } from "Styles/Button";
+
 export const StyledCard = styled(Link)`
   border: ${(props) => (props.selected ? "2px solid" : "none")};
   border-color: ${(props) =>
@@ -18,6 +20,11 @@ export const StyledCard = styled(Link)`
   cursor: pointer;
   text-decoration: none;
 `;
+
+StyledCard.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  categoryid: PropTypes.string.isRequired,
+};
 
 export const StyledImgContainer = styled.div`
   background-color: #dfedf4;

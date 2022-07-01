@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 export const StyledCategoryBadge = styled.span`
   color: white;
@@ -13,3 +14,7 @@ export const StyledCategoryBadge = styled.span`
   }
   width: fit-content;
 `;
+
+StyledCategoryBadge.propTypes = {
+  backgroundColor: PropTypes.string.isRequired,
+};

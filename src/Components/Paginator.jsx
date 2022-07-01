@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import {
   StyledPaginatorContainer,
   PaginatorText,
@@ -34,3 +35,9 @@ export default function Paginator({
     </StyledPaginatorContainer>
   );
 }
+
+Paginator.propTypes = {
+  pagesNumber: PropTypes.number.isRequired,
+  changePageHandler: PropTypes.func.isRequired,
+  pageSelected: PropTypes.number.isRequired,
+};

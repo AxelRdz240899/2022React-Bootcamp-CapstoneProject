@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { BluePrimaryColor } from "./Colors";
+import PropTypes from "prop-types";
 
 export const Button = styled.button`
   cursor: pointer;
@@ -19,3 +20,7 @@ export const Button = styled.button`
     border: ${(props) => props.primary ? `2px solid ${BluePrimaryColor}` : "2px solid transparent"};
   }
 `;
+
+Button.propTypes = {
+  primary : PropTypes.bool.isRequired,  
+}

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Carousel } from "react-responsive-carousel";
 import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
 import {
@@ -18,6 +19,7 @@ export default function ProductGallery({ product }) {
   return (
     <CarouselContainer>
       <Carousel
+        styles={styles}
         dynamicHeight={true}
         autoPlay
         swipable={true}
@@ -39,3 +41,7 @@ export default function ProductGallery({ product }) {
     </CarouselContainer>
   );
 }
+
+ProductGallery.propTypes = {
+  product: PropTypes.object.isRequired,
+};

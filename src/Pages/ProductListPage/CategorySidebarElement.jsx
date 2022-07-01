@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { StyledCategoryContainer } from "Styles/ProductListPage/SideBar";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -29,3 +30,8 @@ export default function CategorySidebarElement({ categoryId, categoryName }) {
     </StyledCategoryContainer>
   );
 }
+
+CategorySidebarElement.propTypes = {
+  categoryId: PropTypes.string.isRequired,
+  categoryName: PropTypes.string.isRequired,
+};
