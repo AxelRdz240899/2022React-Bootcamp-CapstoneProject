@@ -16,7 +16,6 @@ export default function ProductPage() {
     if (!data || isLoading) {
       return () => {};
     } else {
-      console.log(data.results[0]);
       setLoading(false);
       setProduct(data.results[0]);
     }

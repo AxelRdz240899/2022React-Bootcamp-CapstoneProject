@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export function CategoryCard({ name, imageSrc, categoryId }) {
   return (
     <CategoryStyledCard>
-      <Link to={`products?category=${categoryId}`}>
+      <Link to={`/products?category=${categoryId}`}>
         <CategoryCardText>{name}</CategoryCardText>
         <CategoryStyledImage src={imageSrc} alt={name} />
       </Link>

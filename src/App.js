@@ -18,10 +18,6 @@ function App() {
           <Route path="/home" element={<MainPage />} />
           {/* Lista de productos */}
           <Route path="/products" element={<ProductListPage />} />
-          <Route
-            path="/products?category=:category"
-            element={<ProductListPage />}
-          />
           {/* Pagina de producto */}
           <Route path="/product/:productId" element={<ProductPage />} />
         </Routes>

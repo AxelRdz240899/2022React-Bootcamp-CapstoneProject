@@ -11,7 +11,7 @@ import {
 
 import { Button } from "Styles/Button";
 
-export default function MainPage({ changeToProducts }) {
+export default function MainPage() {
   return (
     <MainPageContainer>
       {/* Slider */}
@@ -26,7 +26,7 @@ export default function MainPage({ changeToProducts }) {
       </FeaturedProductsContainer>
       {/* Boton para ir a lista de productos */}
       <Link to="/products">
-        <Button primary onClick={changeToProducts}>
+        <Button primary>
           View all products
         </Button>
       </Link>

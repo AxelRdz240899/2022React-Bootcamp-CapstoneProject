@@ -11,14 +11,25 @@ import { useWizelineGetEndpoints } from "utils/hooks/useWizelineGetEndpoints";
 import { getCategoriesUrl, getProductsUrl } from "utils/constants";
 import LoadingSpinner from "Components/LoadingSpinner";
 import { useDispatch } from "react-redux";
-import { setCategories } from "redux/slices/categoriesSlice";
+import {
+  setCategories,
+  firsSelectCategory,
+  resetSelectedCategories,
+} from "redux/slices/categoriesSlice";
 import { setProductList } from "redux/slices/productsSlice";
+import { useSearchParams } from "react-router-dom";
 
 export default function ProductListPage() {
+  const [searchParams, setSearch] = useSearchParams();
+
   const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
-  // const [products, setProducts] = useState([]);
+  dispatch(resetSelectedCategories());
+
+  if (searchParams.get("category")) {
+    dispatch(firsSelectCategory(searchParams.get("category")));
+  }
 
   let productRequest = useWizelineGetEndpoints(getProductsUrl);
   let categoriesRequest = useWizelineGetEndpoints(getCategoriesUrl);
@@ -26,8 +37,10 @@ export default function ProductListPage() {
   // Use Effect que setea la lista de productos
   useEffect(() => {
     if (
-      (!productRequest.data || productRequest.loadingResponse) ||
-      (!categoriesRequest.data || categoriesRequest.loadingResponse)
+      !productRequest.data ||
+      productRequest.loadingResponse ||
+      !categoriesRequest.data ||
+      categoriesRequest.loadingResponse
     ) {
       return () => {};
     } else {
