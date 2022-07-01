@@ -10,16 +10,20 @@ import { getFeaturedProductsUrl } from "utils/constants";
 import LoadingSpinner from "Components/LoadingSpinner";
 
 export function FeaturedProducts() {
+  const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
 
-  let { data, isLoading } = useWizelineGetEndpoints(getFeaturedProductsUrl);
+  let { data, loadingResponse } = useWizelineGetEndpoints(
+    getFeaturedProductsUrl
+  );
   useEffect(() => {
-    if (!data || isLoading) {
+    if (!data || loadingResponse) {
       return () => {};
     } else {
+      setLoading(false);
       setProducts(data.results.splice(0, 16));
     }
-  }, [data, isLoading]);
+  }, [data, loadingResponse]);
 
   // Lista de productos destacados
   const productCardList = products.map((element) => (
@@ -37,7 +41,7 @@ export function FeaturedProducts() {
 
   return (
     <>
-      {isLoading ? (
+      {loading ? (
         <LoadingSpinner />
       ) : (
         <FeaturedProductsContainer>

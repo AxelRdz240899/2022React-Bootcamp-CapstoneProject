@@ -11,15 +11,18 @@ import LoadingSpinner from "Components/LoadingSpinner";
 import { getCategoriesUrl } from "utils/constants";
 
 export function Categories() {
+  const [loading, setLoading] = useState(true);
   const [categories, setCategories] = useState([]);
-  const { data, isLoading } = useWizelineGetEndpoints(getCategoriesUrl);
+  const { data, loadingResponse } = useWizelineGetEndpoints(getCategoriesUrl);
 
   useEffect(() => {
-    if (!data || isLoading) {
+    if (!data || loadingResponse) {
       return () => {};
+    } else {
+      setLoading(false);
+      setCategories(data.results);
     }
-    setCategories(data.results);
-  }, [data, isLoading]);
+  }, [data, loadingResponse]);
 
   const [mobileVersion, setMobileVersion] = useState(false);
 
@@ -52,7 +55,7 @@ export function Categories() {
 
   return (
     <>
-      {isLoading ? (
+      {loading ? (
         <LoadingSpinner />
       ) : (
         <CategoriesContainer>

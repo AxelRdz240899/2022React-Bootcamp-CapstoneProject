@@ -3,10 +3,10 @@ import { API_BASE_URL } from '../constants';
 import { useLatestAPI } from './useLatestAPI';
 
 export function useFeaturedBanners() {
-  const { ref: apiRef, isLoading: isApiMetadataLoading } = useLatestAPI();
+  const { ref: apiRef, loadingResponse: isApiMetadataLoading } = useLatestAPI();
   const [featuredBanners, setFeaturedBanners] = useState(() => ({
     data: {},
-    isLoading: true,
+    loadingResponse: true,
   }));
 
   useEffect(() => {
@@ -18,7 +18,7 @@ export function useFeaturedBanners() {
 
     async function getFeaturedBanners() {
       try {
-        setFeaturedBanners({ data: {}, isLoading: true });
+        setFeaturedBanners({ data: {}, loadingResponse: true });
 
         const response = await fetch(
           `${API_BASE_URL}/documents/search?ref=${apiRef}&q=${encodeURIComponent(
@@ -30,9 +30,9 @@ export function useFeaturedBanners() {
         );
         const data = await response.json();
 
-        setFeaturedBanners({ data, isLoading: false });
+        setFeaturedBanners({ data, loadingResponse: false });
       } catch (err) {
-        setFeaturedBanners({ data: {}, isLoading: false });
+        setFeaturedBanners({ data: {}, loadingResponse: false });
         console.error(err);
       }
     }

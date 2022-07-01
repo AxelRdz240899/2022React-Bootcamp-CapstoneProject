@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyledMainContainer,
   StyledSideBarContainer,
@@ -15,6 +15,7 @@ import { setCategories } from "redux/slices/categoriesSlice";
 import { setProductList } from "redux/slices/productsSlice";
 
 export default function ProductListPage() {
+  const [loading, setLoading] = useState(true);
   const dispatch = useDispatch();
 
   // const [products, setProducts] = useState([]);
@@ -24,28 +25,27 @@ export default function ProductListPage() {
 
   // Use Effect que setea la lista de productos
   useEffect(() => {
-    if (!productRequest.data || productRequest.isLoading) {
+    if (
+      (!productRequest.data || productRequest.loadingResponse) ||
+      (!categoriesRequest.data || categoriesRequest.loadingResponse)
+    ) {
       return () => {};
     } else {
+      setLoading(false);
       dispatch(setProductList(productRequest.data.results));
-      // setProducts(productRequest.data.results);
-    }
-  }, [productRequest.data, productRequest.isLoading, dispatch]);
-
-  // Use effect que setea la lista de categorias
-  useEffect(() => {
-    if (!categoriesRequest.data || categoriesRequest.isLoading) {
-      return () => {};
-    } else {
       dispatch(setCategories(categoriesRequest.data.results));
     }
-  }, [categoriesRequest.data, categoriesRequest.isLoading, dispatch]);
-
-  // let productList = getFilteredProductList(activeCategories, products);
+  }, [
+    productRequest.data,
+    productRequest.loadingResponse,
+    categoriesRequest.data,
+    categoriesRequest.loadingResponse,
+    dispatch,
+  ]);
 
   return (
     <StyledMainContainer>
-      {!productRequest.isLoading && !categoriesRequest.isLoading ? (
+      {!loading ? (
         <>
           <StyledSideBarContainer>
             <SideBar />

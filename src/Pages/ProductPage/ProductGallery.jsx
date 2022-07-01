@@ -23,6 +23,7 @@ export default function ProductGallery({ product }) {
         swipable={true}
         emulateTouch={true}
         showArrows={true}
+        showThumbs={false}
         renderIndicator={(clickHandler, isSelected, index, label) => {
           return (
             <BannerPoint

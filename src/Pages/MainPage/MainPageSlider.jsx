@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useFeaturedBanners } from "utils/hooks/useFeaturedBanners";
 import {
   BannerContainer,
@@ -12,32 +12,39 @@ import {
 import LoadingSpinner from "Components/LoadingSpinner";
 
 export function Slider() {
+  const [loading, setLoading] = useState(true);
   const [index, updateIndex] = useState(0);
-  const { data, isLoading } = useFeaturedBanners();
+  const [response, setResponse] = useState([]);
+  const { data, loadingResponse } = useFeaturedBanners();
 
-  let bannersData = [];
   let image = "";
   let bannerPoints;
 
-  if (data && !isLoading) {
-    bannersData = data.results;
-    image = bannersData[index]?.data.main_image.url;
-    bannerPoints = bannersData.map((element, i) => (
-      <BannerPoint
-        key={element.id}
-        selected={index === i ? true : false}
-        onClick={() => goToBanner(i)}
-      />
-    ));
-  }
+  useEffect(() => {
+    if (!data || loadingResponse) {
+      return () => {};
+    } else {
+      setLoading(false);
+      setResponse(data.results);
+    }
+  }, [data, loadingResponse]);
+
+  image = response[index]?.data.main_image.url;
+  bannerPoints = response.map((element, i) => (
+    <BannerPoint
+      key={element.id}
+      selected={index === i ? true : false}
+      onClick={() => goToBanner(i)}
+    />
+  ));
 
   function forwardIndexHandler() {
-    let indexAux = index === bannersData.length - 1 ? 0 : index + 1;
+    let indexAux = index === response.length - 1 ? 0 : index + 1;
     updateIndex(indexAux);
   }
 
   function backwardIndexHandler() {
-    let indexAux = index - 1 < 0 ? index + bannersData.length - 1 : index - 1;
+    let indexAux = index - 1 < 0 ? index + response.length - 1 : index - 1;
     updateIndex(indexAux);
   }
 
@@ -49,7 +56,7 @@ export function Slider() {
 
   return (
     <>
-      {isLoading ? (
+      {loading ? (
         <LoadingSpinner />
       ) : (
         <BannerContainer imgUrl={image}>
