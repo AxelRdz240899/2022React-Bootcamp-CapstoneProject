@@ -10,11 +10,11 @@ export default function SearchPage() {
   const [searchParams, setSearch] = useSearchParams();
 
   let query = searchParams.get("q");
-  console.log("Query");
   let { data, isLoading } = useProductSearch(query);
 
   useEffect(() => {
     if (!data.results || isLoading) {
+      setLoading(true);
       return () => {};
     } else {
       setLoading(false);
