@@ -1,30 +1,37 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
+import { StyledCategoryContainer } from "Styles/ProductListPage/SideBar";
+import { useDispatch, useSelector } from "react-redux";
 import {
-  StyledCategoryContainer,
-} from "Styles/ProductListPage/SideBar";
+  selectCategory,
+  getSelectedCategories,
+} from "redux/slices/categoriesSlice";
 
-import CheckBox from "Components/Checkbox";
+import CategoryCheckBox from "Components/CategoryCheckbox";
+import { resetProductPage } from "redux/slices/productsSlice";
 
-export default function CategorySidebarElement({
-  onClickHandler,
-  categoryId,
-  categoryName,
-}) {
-  const [checked, changeChecked] = useState(false);
+export default function CategorySidebarElement({ categoryId, categoryName }) {
+  const dispatch = useDispatch();
+
+  const checked =
+    useSelector(getSelectedCategories).indexOf(categoryId) === -1
+      ? false
+      : true;
 
   function handleClick() {
-    if (checked) {
-      changeChecked(false);
-      onClickHandler(categoryId);
-    } else {
-      changeChecked(true);
-      onClickHandler(categoryId);
-    }
+    dispatch(selectCategory(categoryId));
+    dispatch(resetProductPage());
   }
+
   return (
     <StyledCategoryContainer onClick={() => handleClick()}>
-      <CheckBox checked={checked} />
+      <CategoryCheckBox checked={checked} categoryId={categoryId} />
       {categoryName}
     </StyledCategoryContainer>
   );
 }
+
+CategorySidebarElement.propTypes = {
+  categoryId: PropTypes.string.isRequired,
+  categoryName: PropTypes.string.isRequired,
+};

@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
 import {
   CategoriesGridContainer,
   CategoriesContainer,
 } from "Styles/CategoriesStyles";
-import { SectionTitle } from "Styles/GeneralStyles";
+import { StyledTitle } from "Styles/GeneralStyles";
 import { CategoriesCarousel } from "./CategoriesMobileCarousel";
 import { CategoryCard } from "Components/CategoryCard";
+import { useWizelineGetEndpoints } from "utils/hooks/useWizelineGetEndpoints";
+import LoadingSpinner from "Components/LoadingSpinner";
+import { getCategoriesUrl } from "utils/constants";
 
-export function Categories({ categories }) {
+export function Categories() {
+  const [loading, setLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
+  const { data, loadingResponse } = useWizelineGetEndpoints(getCategoriesUrl);
+
+  useEffect(() => {
+    if (!data || loadingResponse) {
+      return () => {};
+    } else {
+      setLoading(false);
+      setCategories(data.results);
+    }
+  }, [data, loadingResponse]);
+
   const [mobileVersion, setMobileVersion] = useState(false);
 
   const handleResize = () => {
@@ -29,25 +44,28 @@ export function Categories({ categories }) {
   });
 
   // Lista de categorias
-  const categoriesList = categories.map((element) => (
+  const categoriesList = categories?.map((element) => (
     <CategoryCard
       key={element.id}
       name={element.data.name}
       imageSrc={element.data.main_image.url}
+      categoryId={element.id}
     />
   ));
 
   return (
-    <CategoriesContainer>
-      <SectionTitle> Categories </SectionTitle>
-      {mobileVersion && <CategoriesCarousel categories={categoriesList} />}
-      {!mobileVersion && (
-        <CategoriesGridContainer>{categoriesList}</CategoriesGridContainer>
+    <>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <CategoriesContainer>
+          <StyledTitle> Categories </StyledTitle>
+          {mobileVersion && <CategoriesCarousel categories={categoriesList} />}
+          {!mobileVersion && (
+            <CategoriesGridContainer>{categoriesList}</CategoriesGridContainer>
+          )}
+        </CategoriesContainer>
       )}
-    </CategoriesContainer>
+    </>
   );
 }
-
-Categories.propTypes = {
-  categories: PropTypes.array.isRequired,
-};

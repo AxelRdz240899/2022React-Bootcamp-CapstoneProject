@@ -1,11 +1,14 @@
 import styled from "styled-components";
+import PropTypes from "prop-types";
 import { device } from "utils/viewports";
 import { CategoryColors } from "utils/CategoryColors";
+import { Link } from "react-router-dom";
+import { Button } from "Styles/Button";
 
-export const StyledCard = styled.div`
+export const StyledCard = styled(Link)`
   border: ${(props) => (props.selected ? "2px solid" : "none")};
   border-color: ${(props) =>
-    props.selected ? CategoryColors[props.categoryId] : "none"};
+    props.selected ? CategoryColors[props.categoryid] : "none"};
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -15,30 +18,25 @@ export const StyledCard = styled.div`
   background-color: white;
   padding: 12px 25px;
   cursor: pointer;
+  text-decoration: none;
 `;
+
+StyledCard.propTypes = {
+  selected: PropTypes.bool.isRequired,
+  categoryid: PropTypes.string.isRequired,
+};
 
 export const StyledImgContainer = styled.div`
   background-color: #dfedf4;
 `;
 export const StyledProductImage = styled.img`
-  height: auto;
+  height: 200px;
+  width: auto;
   text-align: center;
-
-  ${device.mobile} {
-    width: 60%;
-  }
-
-  ${device.tablet} {
-    width: 45%;
-  }
-
-  ${device.laptop} {
-    width: 55%;
-  }
 `;
 
 export const ProductName = styled.p`
-  color: 	#2389da;
+  color: #2389da;
   font-size: 23px;
   font-weight: 700;
   text-align: center;
@@ -61,4 +59,9 @@ export const ProductPrice = styled.p`
   ${device.mobileL} {
     font-size: 24px;
   }
+`;
+
+export const AddToCartButton = styled(Button)`
+  font-size: 1.1rem;
+  border-radius: 8px;
 `;

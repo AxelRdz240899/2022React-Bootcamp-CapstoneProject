@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { device } from "utils/viewports";
 import { MdNavigateBefore, MdNavigateNext, MdCircle } from "react-icons/md";
+import PropTypes from "prop-types";
 
 export const BannerContainer = styled.div`
   width: 100%;
@@ -27,6 +28,10 @@ export const BannerContainer = styled.div`
     background-position: center center;
   }
 `;
+
+BannerContainer.propTypes = {
+  imgUrl: PropTypes.string.isRequired,
+};
 
 export const BannerContent = styled.div`
   width: 100%;
@@ -56,6 +61,11 @@ export const BannerPoint = styled(MdCircle)`
     font-size: 1.4rem;
   }
 `;
+
+BannerPoint.propTypes = {
+  selected: PropTypes.bool.isRequired,
+};
+
 export const PreviousBanner = styled(MdNavigateBefore)`
   cursor: pointer;
   background-color: #57c0ff;

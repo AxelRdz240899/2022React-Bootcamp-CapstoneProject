@@ -1,37 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import {
   StyledPaginatorContainer,
-  StyledPaginatorButton,
+  PaginatorText,
+  PaginatorSelectedText,
+  PaginatorLeftArrow,
+  PaginatorRightArrow,
 } from "Styles/Paginator";
+export default function Paginator({
+  pagesNumber,
+  changePageHandler,
+  pageSelected,
+}) {
+  function changePage(pageNumber) {
+    if (pageNumber > 0 && pageNumber < pagesNumber + 1) {
+      changePageHandler(pageNumber);
+    }
+  }
 
-function PaginatorButton({ number, selected, clickHandler }) {
   return (
-    <StyledPaginatorButton
-      onClick={() => clickHandler(number)}
-      selected={selected}
-    >
-      {number}
-    </StyledPaginatorButton>
+    <StyledPaginatorContainer>
+      <PaginatorLeftArrow
+        disabled={pageSelected === 1}
+        onClick={() => changePage(pageSelected - 1)}
+      />
+      <PaginatorText>
+        <PaginatorSelectedText>{pageSelected}/</PaginatorSelectedText>
+        {pagesNumber}
+      </PaginatorText>
+      <PaginatorRightArrow
+        disabled={pageSelected === pagesNumber}
+        onClick={() => changePage(pageSelected + 1)}
+      />
+    </StyledPaginatorContainer>
   );
 }
-export default function Paginator({ pagesNumber }) {
-  const [pageSelected, setPage] = useState(1);
 
-  function changePage(number) {
-    setPage(number);
-  }
-
-  let pageList = [];
-  for (let i = 0; i < pagesNumber; i++) {
-    pageList.push(
-      <PaginatorButton
-        key={i}
-        clickHandler={changePage}
-        selected={i + 1 === pageSelected ? true : false}
-        number={i + 1}
-      />
-    );
-  }
-
-  return <StyledPaginatorContainer> {pageList}</StyledPaginatorContainer>;
-}
+Paginator.propTypes = {
+  pagesNumber: PropTypes.number.isRequired,
+  changePageHandler: PropTypes.func.isRequired,
+  pageSelected: PropTypes.number.isRequired,
+};

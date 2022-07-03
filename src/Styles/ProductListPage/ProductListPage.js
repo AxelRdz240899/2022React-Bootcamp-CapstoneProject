@@ -3,7 +3,7 @@ import { device } from "utils/viewports";
 
 export const StyledMainContainer = styled.section`
   display: flex;
-
+  background-color: #f2f8ff;
   ${device.mobile} {
     flex-direction: column;
   }
@@ -42,13 +42,6 @@ export const StyledProductsContainer = styled.div`
   ${device.desktopXXL} {
     width: 80%;
   }
-`;
-
-export const StyledTitle = styled.h2`
-  color: #03396c;
-  font-size: 2rem;
-  text-align: center;
-  margin: 0.5rem 0;
 `;
 
 export const CenteredContainer = styled.div`

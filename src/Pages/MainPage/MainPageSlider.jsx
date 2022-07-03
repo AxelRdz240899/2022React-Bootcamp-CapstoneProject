@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useFeaturedBanners } from "utils/hooks/useFeaturedBanners";
 import {
   BannerContainer,
   BannerContent,
@@ -8,16 +9,28 @@ import {
   BannerPoint,
 } from "Styles/SliderStyles";
 
-const featuredBanners = require("mocks/en-us/featured-banners.json");
-
-const bannersData = featuredBanners.results;
+import LoadingSpinner from "Components/LoadingSpinner";
 
 export function Slider() {
+  const [loading, setLoading] = useState(true);
   const [index, updateIndex] = useState(0);
+  const [response, setResponse] = useState([]);
+  const { data, loadingResponse } = useFeaturedBanners();
 
-  const image = bannersData[index].data.main_image.url;
+  let image = "";
+  let bannerPoints;
 
-  const bannerPoints = featuredBanners.results.map((element, i) => (
+  useEffect(() => {
+    if (!data || loadingResponse) {
+      return () => {};
+    } else {
+      setLoading(false);
+      setResponse(data.results);
+    }
+  }, [data, loadingResponse]);
+
+  image = response[index]?.data.main_image.url;
+  bannerPoints = response.map((element, i) => (
     <BannerPoint
       key={element.id}
       selected={index === i ? true : false}
@@ -26,12 +39,12 @@ export function Slider() {
   ));
 
   function forwardIndexHandler() {
-    let indexAux = index === bannersData.length - 1 ? 0 : index + 1;
+    let indexAux = index === response.length - 1 ? 0 : index + 1;
     updateIndex(indexAux);
   }
 
   function backwardIndexHandler() {
-    let indexAux = index - 1 < 0 ? index + bannersData.length - 1 : index - 1;
+    let indexAux = index - 1 < 0 ? index + response.length - 1 : index - 1;
     updateIndex(indexAux);
   }
 
@@ -42,12 +55,18 @@ export function Slider() {
   }
 
   return (
-    <BannerContainer imgUrl={image}>
-      <BannerContent>
-        <PreviousBanner onClick={() => backwardIndexHandler()} />
-        <NextBanner onClick={() => forwardIndexHandler()} />
-        <BannerPointContainer>{bannerPoints}</BannerPointContainer>
-      </BannerContent>
-    </BannerContainer>
+    <>
+      {loading ? (
+        <LoadingSpinner />
+      ) : (
+        <BannerContainer imgUrl={image}>
+          <BannerContent>
+            <PreviousBanner onClick={() => backwardIndexHandler()} />
+            <NextBanner onClick={() => forwardIndexHandler()} />
+            <BannerPointContainer>{bannerPoints}</BannerPointContainer>
+          </BannerContent>
+        </BannerContainer>
+      )}
+    </>
   );
 }

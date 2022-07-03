@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyledMainContainer,
   StyledSideBarContainer,
@@ -7,63 +7,69 @@ import {
 
 import SideBar from "./SideBar";
 import ProductListSection from "./ProductList";
-import { ProductCard } from "Components/ProductCard";
+import { useWizelineGetEndpoints } from "utils/hooks/useWizelineGetEndpoints";
+import { getCategoriesUrl, getProductsUrl } from "utils/constants";
+import LoadingSpinner from "Components/LoadingSpinner";
+import { useDispatch } from "react-redux";
+import {
+  setCategories,
+  firsSelectCategory,
+  resetSelectedCategories,
+} from "redux/slices/categoriesSlice";
+import { setProductList } from "redux/slices/productsSlice";
+import { useSearchParams } from "react-router-dom";
 
-const productsJson = require("mocks/en-us/products.json");
-
-function getFilteredProductList(filters) {
-  let filteredProductList = [];
-
-  if (filters.length === 0) {
-    filteredProductList = productsJson.results;
-  } else {
-    productsJson.results.forEach((product) => {
-      if (filters.indexOf(product.data.category.id) !== -1) {
-        filteredProductList.push(product);
-      }
-    });
-  }
-
-  return filteredProductList.map((element) => (
-    <ProductCard
-      selected={true}
-      key={element.data.sku}
-      name={element.data.name}
-      categoryId={element.data.category.id}
-      categoryName={element.data.category.slug}
-      price={element.data.price}
-      imageUrl={element.data.mainimage.url}
-    />
-  ));
-}
 export default function ProductListPage() {
-  const [activeCategories, setActiveCategories] = useState([]);
+  const [searchParams, setSearch] = useSearchParams();
 
-  let productList = getFilteredProductList(activeCategories);
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
 
-  function categoryClick(categoryId) {
-    let categoryIndex = activeCategories.indexOf(categoryId);
-    let newCategoryArray = [];
+  dispatch(resetSelectedCategories());
 
-    newCategoryArray.push(...activeCategories);
-
-    if (categoryIndex === -1) {
-      newCategoryArray.push(categoryId);
-      setActiveCategories(newCategoryArray);
-    } else {
-      newCategoryArray.splice(categoryIndex, 1);
-      setActiveCategories(newCategoryArray);
-    }
+  if (searchParams.get("category")) {
+    dispatch(firsSelectCategory(searchParams.get("category")));
   }
+
+  let productRequest = useWizelineGetEndpoints(getProductsUrl);
+  let categoriesRequest = useWizelineGetEndpoints(getCategoriesUrl);
+
+  // Use Effect que setea la lista de productos
+  useEffect(() => {
+    if (
+      !productRequest.data ||
+      productRequest.loadingResponse ||
+      !categoriesRequest.data ||
+      categoriesRequest.loadingResponse
+    ) {
+      return () => {};
+    } else {
+      setLoading(false);
+      dispatch(setProductList(productRequest.data.results));
+      dispatch(setCategories(categoriesRequest.data.results));
+    }
+  }, [
+    productRequest.data,
+    productRequest.loadingResponse,
+    categoriesRequest.data,
+    categoriesRequest.loadingResponse,
+    dispatch,
+  ]);
 
   return (
     <StyledMainContainer>
-      <StyledSideBarContainer>
-        <SideBar categoryClick={categoryClick} />
-      </StyledSideBarContainer>
-      <StyledProductsContainer>
-        <ProductListSection products={productList} />
-      </StyledProductsContainer>
+      {!loading ? (
+        <>
+          <StyledSideBarContainer>
+            <SideBar />
+          </StyledSideBarContainer>
+          <StyledProductsContainer>
+            <ProductListSection />
+          </StyledProductsContainer>
+        </>
+      ) : (
+        <LoadingSpinner />
+      )}
     </StyledMainContainer>
   );
 }

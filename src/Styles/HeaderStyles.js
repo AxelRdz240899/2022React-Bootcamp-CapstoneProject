@@ -1,26 +1,55 @@
 import styled from "styled-components";
 import { device } from "utils/viewports";
 import { MdShoppingCart } from "react-icons/md";
-
+import { Button } from "./Button";
 export const StyledHeader = styled.header`
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
-  height: 80px;
+  height: 130px;
+  align-items: center;
+  justify-content: center;
+  ${device.mobileL} {
+    height: 100px;
+    align-items: center;
+    justify-content: space-evenly;
+  }
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: space-around;
+  flex-wrap: wrap;
+  position: fixed;
+  background-color: white;
+  top: 0;
+  z-index: 9999;
+`;
+
+export const LogoContainer = styled.div`
+  ${device.mobile} {
+    width: 100%;
+    text-align: center;
+  }
+
+  ${device.mobileL} {
+    width: auto;
+  }
 `;
 
 export const StyledLogo = styled.img`
   cursor: pointer;
-  height: 60px;
+  height: 70px;
+
+  ${device.tablet} {
+    height: 80px;
+  }
 `;
 
 export const StyledCartIcon = styled(MdShoppingCart)`
-  font-size: 2.5rem;
+  display: block;
+  font-size: 2rem;
   color: gray;
   cursor: pointer;
+  ${device.mobileL} {
+    font-size: 2.5rem;
+  }
 
   &:hover {
     transition: 0.3s color ease-in-out;
@@ -29,22 +58,34 @@ export const StyledCartIcon = styled(MdShoppingCart)`
 `;
 
 export const StyledInput = styled.input`
-  height: 50%;
+  height: 30px;
   border-radius: 12px;
   border: 2px solid #158cd2;
-  font-size: 1.3rem;
+  font-size: 0.8rem;
   padding-left: 15px;
-
+  width: 80%;
   &:focus {
     outline: 0;
     transition: border-color 0.6s ease-in-out;
     border-color: #0060b7;
   }
 
-  ${device.mobile} {
-    width: 45%;
-    font-size: 0.8rem;
+  ${device.mobileL} {
+    width: 80%;
   }
+
+  ${device.tablet} {
+    height: 35px;
+    font-size: 1rem;
+  }
+`;
+
+export const SearchContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 65%;
+  margin-right: 20px;
 
   ${device.mobileL} {
     width: 65%;
@@ -52,10 +93,17 @@ export const StyledInput = styled.input`
 
   ${device.tablet} {
     width: 55%;
-    font-size: 1rem;
   }
 
   ${device.laptop} {
     width: 50%;
+  }
+`;
+
+export const HeaderButton = styled(Button)`
+  margin-left: 15px;
+  font-size: 0.8rem;
+  ${device.desktop} {
+    font-size: 1rem;
   }
 `;

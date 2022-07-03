@@ -1,11 +1,8 @@
 import styled from "styled-components";
 
-export const SectionTitle = styled.h2`
-  text-align: center;
+export const StyledTitle = styled.h2`
+  color: #03396c;
   font-size: 2rem;
-  font-weight: 500;
-`;
-
-export const ContentContainer = styled.div`
-  background-color: #f2f8ff;
+  text-align: center;
+  margin: 0.5rem 0;
 `;

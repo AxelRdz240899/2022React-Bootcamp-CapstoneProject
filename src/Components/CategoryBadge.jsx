@@ -4,14 +4,14 @@ import { StyledCategoryBadge } from "Styles/CategoryBadgeStyles";
 import { CategoryColors } from "utils/CategoryColors";
 
 export function CategoryBadge({ categoryId, categoryName }) {
+  let category = categoryName?.replace("--", " & ");
   return (
     <StyledCategoryBadge backgroundColor={CategoryColors[categoryId]}>
-      {categoryName}
+      {category}
     </StyledCategoryBadge>
   );
 }
 
 CategoryBadge.propTypes = {
   categoryName: PropTypes.string.isRequired,
-  categoryId: PropTypes.string.isRequired,
 };

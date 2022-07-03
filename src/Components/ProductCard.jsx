@@ -5,6 +5,7 @@ import {
   StyledProductImage,
   ProductName,
   ProductPrice,
+  AddToCartButton,
 } from "Styles/ProductCardStyles";
 import { CategoryBadge } from "./CategoryBadge";
 
@@ -15,25 +16,29 @@ export function ProductCard({
   categoryName,
   price,
   imageUrl,
+  productId,
 }) {
   return (
-    <StyledCard selected={selected} categoryId={categoryId}>
+    <StyledCard
+      to={`/product/${productId}`}
+      selected={selected}
+      categoryid={categoryId}
+    >
       <StyledProductImage src={imageUrl} alt={name} />
       <ProductName> {name}</ProductName>
       <CategoryBadge categoryId={categoryId} categoryName={categoryName} />
-      {/* <ProductInformationContainer>
-      </ProductInformationContainer> */}
-      <ProductPrice> ${price} US</ProductPrice>
-      {/* <PriceContainer>
-      </PriceContainer> */}
+      <ProductPrice> ${price} USD</ProductPrice>
+      <AddToCartButton> Add to Cart </AddToCartButton>
     </StyledCard>
   );
 }
 
 ProductCard.propTypes = {
+  selected: PropTypes.bool.isRequired,
   name: PropTypes.string.isRequired,
   categoryName: PropTypes.string.isRequired,
   categoryId: PropTypes.string.isRequired,
   price: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
+  productId: PropTypes.string.isRequired,
 };

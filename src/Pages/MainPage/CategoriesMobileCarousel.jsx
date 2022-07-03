@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
 export function CategoriesCarousel({ categories }) {
   const [index, updateIndex] = useState(0);
@@ -16,3 +17,7 @@ export function CategoriesCarousel({ categories }) {
   }, [index, categories.length]);
   return <>{categories[index]}</>;
 }
+
+CategoriesCarousel.propTypes = {
+  categories: PropTypes.array.isRequired,
+};
