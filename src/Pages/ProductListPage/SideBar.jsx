@@ -40,7 +40,9 @@ export default function SideBar() {
         {categoriesList}
       </StyledCategoryListContainer>
       {selectedCategories.length > 0 && (
-        <Button onClick={() => resetCategorySelection()}>Clear filters</Button>
+        <Button primary={false} onClick={() => resetCategorySelection()}>
+          Clear filters
+        </Button>
       )}
     </>
   );

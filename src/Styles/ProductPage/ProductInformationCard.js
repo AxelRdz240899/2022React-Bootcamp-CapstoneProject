@@ -85,9 +85,9 @@ export const Price = styled.label`
 `;
 
 export const Stock = styled.label`
-  color: #007600;
+  color: ${(props) => (props.empty ? "#dc3545" : "#007600")};
   font-size: 1.5rem;
-  font-weight: 600;
+  font-weight: 700;
 `;
 
 export const SpecTitle = styled.span`
@@ -106,7 +106,7 @@ export const QuantityInput = styled.input`
   border-radius: 12px;
   font-size: 1.3rem;
   font-weight: 500;
-  border: 2px solid #158cd2;
+  border: 2px solid ${(props) => (props.disabled ? "#e5e5e5" : "#158cd2")};
   height: 30px;
   width: 50px;
   &:focus {
@@ -114,6 +114,13 @@ export const QuantityInput = styled.input`
     transition: border-color 0.6s ease-in-out;
     border-color: #0060b7;
   }
+
+  ::-webkit-inner-spin-button,
+  ::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  -moz-appearance: textfield;
 `;
 
 export const Separator = styled.div`
