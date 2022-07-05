@@ -43,5 +43,5 @@ export default function ProductGallery({ images }) {
 }
 
 ProductGallery.propTypes = {
-  product: PropTypes.object.isRequired,
+  images: PropTypes.array.isRequired,
 };

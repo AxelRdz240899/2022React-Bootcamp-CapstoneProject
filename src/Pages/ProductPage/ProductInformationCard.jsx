@@ -83,6 +83,7 @@ export default function ProductInformationCard({ product }) {
         icon: "success",
         title: "The product has been added to your cart",
       });
+      setProductQuantityInput(1);
     }
     // Update product from cart
     else {
@@ -92,10 +93,12 @@ export default function ProductInformationCard({ product }) {
           requested: Number(productQuantityInput),
         })
       );
+
       swal.fire({
         icon: "info",
         title: "The product has been updated in your cart",
       });
+      setProductQuantityInput(1);
     }
   }
 

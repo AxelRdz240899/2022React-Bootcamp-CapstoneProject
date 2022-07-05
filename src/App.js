@@ -7,6 +7,7 @@ import { Header } from "Components/Header";
 import { Footer } from "Components/Footer";
 import { Content } from "Styles/Content";
 import SearchPage from "Pages/SearchPage/Index";
+import ShoppingCartPage from "Pages/ShoppingCartPage/Index";
 function App() {
   return (
     <>
@@ -23,6 +24,8 @@ function App() {
           <Route path="/product/:productId" element={<ProductPage />} />
           {/* Pagina de busqueda de producto */}
           <Route path="/search" element={<SearchPage />} />
+          {/* Página de carrito */}
+          <Route path="/cart" element={<ShoppingCartPage />} />
         </Routes>
       </Content>
       {/* Footer */}
