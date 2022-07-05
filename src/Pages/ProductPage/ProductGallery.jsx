@@ -8,8 +8,8 @@ import {
 } from "Styles/ProductPage/ProductGallery";
 import { BannerPoint } from "Styles/SliderStyles";
 
-export default function ProductGallery({ product }) {
-  const productGalleryContent = product?.data?.images?.map((element) => {
+export default function ProductGallery({ images }) {
+  const productGalleryContent = images?.map((element) => {
     return (
       <div key={element.image.url}>
         <ProductGalleryImage src={element.image.url} alt={element.image.url} />

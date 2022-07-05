@@ -28,7 +28,7 @@ export default function ProductPage() {
       ) : (
         <MainContainer>
           <CarouselContainer>
-            <ProductGallery product={product} />
+            <ProductGallery images={product.data.images} />
           </CarouselContainer>
           <ProductInformationCard product={product} />
         </MainContainer>

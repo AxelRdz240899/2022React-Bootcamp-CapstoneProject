@@ -26,6 +26,7 @@ import {
   getProductsFromCart,
   updateProductFromCart,
 } from "redux/slices/cartSlice";
+import swal from "sweetalert2";
 
 export default function ProductInformationCard({ product }) {
   let productIndex = useSelector(getProductsFromCart).findIndex(
@@ -58,24 +59,43 @@ export default function ProductInformationCard({ product }) {
   }
 
   function AddToCart() {
+    // If there is not enough stock
     if (productQuantityInput > product?.data.stock) {
+      swal.fire({
+        icon: "error",
+        title: `Oops... The requested amount can´t be more than ${product.data.stock} pieces`,
+      });
       return;
     }
+    // Add new product to cart
     if (productIndex === -1) {
-      console.log("No existe en carrito");
       dispatch(
         addProductToCart({
           id: product.id,
           requested: Number(productQuantityInput),
+          image: product.data.mainimage.url,
+          name: product.data.name,
+          unitaryPrice: product.data.price,
+          stock: product.data.stock,
         })
       );
-    } else {
+      swal.fire({
+        icon: "success",
+        title: "The product has been added to your cart",
+      });
+    }
+    // Update product from cart
+    else {
       dispatch(
         updateProductFromCart({
           index: productIndex,
           requested: Number(productQuantityInput),
         })
       );
+      swal.fire({
+        icon: "info",
+        title: "The product has been updated in your cart",
+      });
     }
   }
 
