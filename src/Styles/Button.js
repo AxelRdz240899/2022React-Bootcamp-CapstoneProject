@@ -17,7 +17,7 @@ export const Button = styled.button`
   border-radius: 5px;
   width: fit-content;
   transition: 0.3s ease-out;
-  margin: 8px 0px;
+  margin: 8px 6px;
 
   &:hover:enabled {
     background-color: ${(props) =>

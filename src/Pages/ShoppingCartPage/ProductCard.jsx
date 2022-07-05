@@ -29,6 +29,7 @@ export default function ProductCard({
   image,
   price,
   quantity,
+  stock,
 }) {
   const productIndex = useSelector(getProductsFromCart).findIndex(
     (element) => element.id === productId
@@ -37,6 +38,13 @@ export default function ProductCard({
   const [inputValue, setInputValue] = useState(quantity);
   function handleProductChange(event) {
     let value = event.target.value;
+    if (value > stock) {
+      swal.fire({
+        icon: "error",
+        title: `Oops... The requested amount can´t be more than ${stock} pieces`,
+      });
+      return;
+    }
     setInputValue(value);
     if (value) {
       dispatch(
