@@ -77,7 +77,7 @@ export default function ProductCard({
         />
       </InputContainer>
       <ProductInformationContainer>
-        <TotalTitle>TOTAL</TotalTitle>
+        <TotalTitle>Subtotal</TotalTitle>
         <TotalLabel> {"$" + Number(price * quantity) + " USD"}</TotalLabel>
       </ProductInformationContainer>
       <IconContainer>

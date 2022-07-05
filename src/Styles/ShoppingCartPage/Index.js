@@ -22,3 +22,13 @@ export const CartTableContainer = styled.div`
     width: 60%;
   }
 `;
+
+export const CartTotalContainer = styled.label`
+  font-size: 2.2rem;
+  text-align: center;
+`;
+
+export const CartTotalSpan = styled.span`
+  color: #28a745;
+  font-weight: 600;
+`;
