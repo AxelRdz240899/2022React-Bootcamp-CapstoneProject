@@ -4,14 +4,12 @@ import { device } from "utils/viewports";
 export const CarouselContainer = styled.div`
   ${device.mobile} {
     width: 100%;
+    margin-bottom: 15px;
   }
-
-  ${device.tablet} {
-    width: 85%;
-  }
-
+  
   ${device.laptop} {
     width: 90%;
+    margin-bottom: 0;
   }
 `;
 export const ProductGalleryImage = styled.img`

@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { device } from "utils/viewports";
 import { CategoryColors } from "utils/CategoryColors";
 import { Link } from "react-router-dom";
-import { Button } from "Styles/Button";
 
 export const StyledCard = styled(Link)`
   border: ${(props) => (props.selected ? "2px solid" : "none")};
@@ -59,9 +58,4 @@ export const ProductPrice = styled.p`
   ${device.mobileL} {
     font-size: 24px;
   }
-`;
-
-export const AddToCartButton = styled(Button)`
-  font-size: 1.1rem;
-  border-radius: 8px;
 `;

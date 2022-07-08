@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import logo from "utils/assets/logo.png";
+import CartIcon from "./CartIcon";
 import {
   StyledHeader,
   StyledLogo,
-  StyledCartIcon,
   StyledInput,
   HeaderButton,
   SearchContainer,
@@ -48,7 +48,7 @@ export function Header() {
         </HeaderButton>
       </SearchContainer>
 
-      <StyledCartIcon onClick={() => console.log("Click en carrito")} />
+      <CartIcon/>
     </StyledHeader>
   );
 }

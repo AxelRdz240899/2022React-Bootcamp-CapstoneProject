@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import {
   ProductInformationContainer,
@@ -20,9 +20,24 @@ import {
 } from "Styles/ProductPage/ProductInformationCard";
 
 import { CategoryBadge } from "Components/CategoryBadge";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addProductToCart,
+  getProductsFromCart,
+  updateProductFromCart,
+} from "redux/slices/cartSlice";
+import swal from "sweetalert2";
 
 export default function ProductInformationCard({ product }) {
-  const tags = product?.tags?.map((element, index) => {
+  let productIndex = useSelector(getProductsFromCart).findIndex(
+    (element) => element.id === product?.id
+  );
+  const dispatch = useDispatch();
+  const [productQuantityInput, setProductQuantityInput] = useState(
+    product?.data.stock === 0 ? 0 : 1
+  );
+
+  const tags = product?.tags?.map((element) => {
     return <Tag key={element}>{element}</Tag>;
   });
 
@@ -34,6 +49,58 @@ export default function ProductInformationCard({ product }) {
       </li>
     );
   });
+
+  function handleProductInput(event) {
+    let value = event.target.value;
+    if (value < 0) {
+      value = 0;
+    }
+    setProductQuantityInput(value);
+  }
+
+  function AddToCart() {
+    // If there is not enough stock
+    if (productQuantityInput > product?.data.stock) {
+      swal.fire({
+        icon: "error",
+        title: `Oops... The requested amount can´t be more than ${product.data.stock} pieces`,
+      });
+      return;
+    }
+    // Add new product to cart
+    if (productIndex === -1) {
+      dispatch(
+        addProductToCart({
+          id: product.id,
+          requested: Number(productQuantityInput),
+          image: product.data.mainimage.url,
+          name: product.data.name,
+          unitaryPrice: product.data.price,
+          stock: product.data.stock,
+        })
+      );
+      swal.fire({
+        icon: "success",
+        title: "The product has been added to your cart",
+      });
+      setProductQuantityInput(1);
+    }
+    // Update product from cart
+    else {
+      dispatch(
+        updateProductFromCart({
+          index: productIndex,
+          requested: Number(productQuantityInput),
+        })
+      );
+
+      swal.fire({
+        icon: "info",
+        title: "The product has been updated in your cart",
+      });
+      setProductQuantityInput(1);
+    }
+  }
 
   return (
     <ProductInformationContainer>
@@ -66,7 +133,9 @@ export default function ProductInformationCard({ product }) {
         <ul>{specs}</ul>
         <Separator />
         {/* Stock */}
-        <Stock>{product?.data.stock + " LEFT!"}</Stock>
+        <Stock empty={product?.data.stock === 0}>
+          {product?.data.stock + " LEFT"}
+        </Stock>
 
         {/* Precio */}
         <Price> For Only </Price>
@@ -75,11 +144,23 @@ export default function ProductInformationCard({ product }) {
         <QuantityContainer>
           <SectionTitle>Quantity: </SectionTitle>
           {/* Input Numerico */}
-          <QuantityInput type="number" />
+          <QuantityInput
+            min={1}
+            value={productQuantityInput}
+            onChange={handleProductInput}
+            disabled={product?.data.stock === 0}
+            type="number"
+          />
         </QuantityContainer>
         <br />
         {/* Boton carrito */}
-        <AddToCartButton primary> Add to Cart</AddToCartButton>
+        <AddToCartButton
+          disabled={product?.data.stock === 0}
+          primary
+          onClick={AddToCart}
+        >
+          Add to Cart
+        </AddToCartButton>
 
         {/* SKU */}
         <SectionTitle align={"center"}> SKU </SectionTitle>

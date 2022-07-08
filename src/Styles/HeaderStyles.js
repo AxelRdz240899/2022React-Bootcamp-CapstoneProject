@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { device } from "utils/viewports";
-import { MdShoppingCart } from "react-icons/md";
 import { Button } from "./Button";
+
 export const StyledHeader = styled.header`
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 10%);
   height: 130px;
@@ -39,21 +39,6 @@ export const StyledLogo = styled.img`
 
   ${device.tablet} {
     height: 80px;
-  }
-`;
-
-export const StyledCartIcon = styled(MdShoppingCart)`
-  display: block;
-  font-size: 2rem;
-  color: gray;
-  cursor: pointer;
-  ${device.mobileL} {
-    font-size: 2.5rem;
-  }
-
-  &:hover {
-    transition: 0.3s color ease-in-out;
-    color: #158cd2;
   }
 `;
 

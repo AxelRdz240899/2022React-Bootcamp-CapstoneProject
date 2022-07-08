@@ -5,7 +5,6 @@ import {
   StyledProductImage,
   ProductName,
   ProductPrice,
-  AddToCartButton,
 } from "Styles/ProductCardStyles";
 import { CategoryBadge } from "./CategoryBadge";
 
@@ -28,7 +27,6 @@ export function ProductCard({
       <ProductName> {name}</ProductName>
       <CategoryBadge categoryId={categoryId} categoryName={categoryName} />
       <ProductPrice> ${price} USD</ProductPrice>
-      <AddToCartButton> Add to Cart </AddToCartButton>
     </StyledCard>
   );
 }
